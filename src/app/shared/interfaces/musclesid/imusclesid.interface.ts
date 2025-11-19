@@ -1,3 +1,4 @@
+import { Imuscles } from "../muscles/imuscles.interface";
 
 export interface ImusclesId {
   _id: string;
@@ -8,5 +9,7 @@ export interface ImusclesId {
 
 export interface IMusclesIdResponse {
   message: string;
-  musclesGroup: ImusclesId[];
+  musclesGroup: Imuscles[];
+  muscles :ImusclesId[];
+
 }

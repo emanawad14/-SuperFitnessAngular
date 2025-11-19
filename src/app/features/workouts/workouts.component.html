@@ -1,29 +1,30 @@
-<section class="image text-center">
-  <div>
+<section class="image text-center relative">
+  
 
-    <div class="flex flex-col items-center gap-2 mb-4 py-6 text-center">
-      <img src="/images/Why us.png" alt="" class="w-auto h-auto">
+    <div class="flex flex-col items-center gap-2 py-6 text-center">
+      <img src="/images/Why us.png" alt="" class="w-auto ">
 
       
       
-    </div>
+    
 
-    <div class="bg-[#FFFFFF99] py-7 h-auto">
+    <div class="bg-[#FFFFFF99] w-full py-10 relative px-4">
 
-      <div class="flex items-center gap-2 justify-center">
+      <div class="flex items-center justify-center gap-2">
         <i class="fa-solid fa-dumbbell text-[#ff4500] text-[20px]"></i>
         <span class="font-semibold tracking-wide text-[#ff4500]">
           fitness class
         </span>
       </div>
 
-      <h1 class="text-[40px] font-bold leading-tight mb-4">
+      <h1 class="text-[28px] sm:text-[30px] md:text-[40px] uppercase font-bold leading-tight 
+                 mb-10  px-4">
         Transform Your Body with Our <br>
         Dynamic <span class="text-[#ff4500]">Upcoming Workouts</span>
       </h1>
 
 
-      <ul class="flex flex-wrap justify-center items-center gap-4 px-4">
+      <ul class="flex flex-wrap justify-center items-center mb-10 sm:mb-16 md:mb-60 px-4 gap-4 ">
         @for (m of muscles; track m._id) {
           <li>
             <button
@@ -39,8 +40,18 @@
         }
       </ul>
 
-      <!-- CARDS SECTION -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-10 px-6">
+      
+      <div class=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 
+          gap-6 
+          
+
+          static sm:static 
+          
+       
+          md:absolute md:left-1/2 md:-translate-x-1/2 
+          md:-bottom-20 lg:-bottom-24
+          
+          w-full">
         @for (card of muscleCards; track card._id) {
           <div class="border border-default rounded-base shadow-md">
             <img class="rounded-t-base w-full h-60 object-cover" [src]="card.image" alt="">
@@ -57,6 +68,7 @@
       </div>
 
     </div>
+     </div>
+ <div class="hidden md:block h-60"></div>
 
-  </div>
 </section>

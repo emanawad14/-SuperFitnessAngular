@@ -9,46 +9,49 @@
 @import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
 @import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
 
-/* Baloo Thambi 2 */
-@font-face {
-  font-family: "Baloo";
-  src: url("/assets/fonts/BalooThambi2-Regular.ttf");
-  font-weight: 400;
-  font-style: normal;
+
+// @font-face {
+//   font-family: "Baloo";
+//   src: url("/assets/fonts/BalooThambi2-Regular.ttf");
+//   font-weight: 400;
+//   font-style: normal;
+// }
+
+// @font-face {
+//   font-family: "Baloo";
+//   src: url("/assets/fonts/BalooThambi2-Bold.ttf");
+//   font-weight: 700;
+//   font-style: normal;
+// }
+
+// @font-face {
+//   font-family: "Inter";
+//   src: url("/assets/fonts/Inter-Regular.ttf");
+//   font-weight: 400;
+//   font-style: normal;
+// }
+
+// @font-face {
+//   font-family: "Inter";
+//   src: url("/assets/fonts/Inter-SemiBold.ttf");
+//   font-weight: 600;
+//   font-style: normal;
+// }
+
+body{
+  font-family: "Baloo Thambi 2", system-ui;
 }
 
-@font-face {
-  font-family: "Baloo";
-  src: url("/assets/fonts/BalooThambi2-Bold.ttf");
-  font-weight: 700;
-  font-style: normal;
-}
+// @font-face {
+//   font-family: "Rubik";
+//   src: url("/assets/fonts/Rubik-Regular.ttf");
+//   font-weight: 400;
+//   font-style: normal;
+// }
 
-@font-face {
-  font-family: "Inter";
-  src: url("/assets/fonts/Inter-Regular.ttf");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Inter";
-  src: url("/assets/fonts/Inter-SemiBold.ttf");
-  font-weight: 600;
-  font-style: normal;
-}
-
-
-@font-face {
-  font-family: "Rubik";
-  src: url("/assets/fonts/Rubik-Regular.ttf");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Rubik";
-  src: url("/assets/fonts/Rubik-Bold.ttf");
-  font-weight: 700;
-  font-style: normal;
-}
+// @font-face {
+//   font-family: "Rubik";
+//   src: url("/assets/fonts/Rubik-Bold.ttf");
+//   font-weight: 700;
+//   font-style: normal;
+// }

@@ -1,75 +1,66 @@
+<section class="image text-center font relative">
 
+  <div class="flex flex-col items-center gap-2 py-6 text-center">
+    <img src="/images/Healthy.png" alt="" class="w-auto">
 
- <section class="image text-center font">
-  
+    <div class="bg-[#FFFFFF99] w-full py-10 relative px-4">
 
-  
-    <div class="flex flex-col items-center gap-2 mb-4 py-6 text-center">
-      <img src="/images/Healthy.png" alt="" class="w-auto  ">
-
-     <div class=" py-7     bg-[#FFFFFF99] w-full
-    h-auto rounded-xl -mt-6 md:-mt-10">
-       <div class="flex items-center mb-5 justify-center gap-2">
+      <div class="flex items-center justify-center gap-2">
         <i class="fa-solid fa-dumbbell text-[#ff4500] text-[25px]"></i>
         <span class="font-semibold tracking-wide text-[#ff4500]">
-        Healthy Nutritions
+          Healthy Nutritions
         </span>
       </div>
 
-         <h1 class="text-[40px] uppercase   font-bold leading-tight mb-4">
+      <h1 class="text-[28px] sm:text-[30px] md:text-[40px] uppercase font-bold leading-tight 
+                 mb-10 sm:mb-16 md:mb-60 px-4">
         Fuel your fitness journey with <br>
-customized
-        <span class="text-[#ff4500]">meal plans</span> for you
+        customized <span class="text-[#ff4500]">meal plans</span> for you
       </h1>
 
+     
+      <div class="max-w-6xl mx-auto px-4">
 
-      
-
-
-
-      
-
-   
-      
-
-   
-    <div class="grid grid-cols-1  md:grid-cols-3 gap-6 mt-10 px-6">
-
-      @for (meal of meals; track meal.idCategory) {
-        <div class="border border-default rounded-base shadow-md">
+        <div class="
+          grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 
+          gap-6 
           
-          <img class="rounded-t-base bg-white w-full h-60 object-cover" [src]="meal.strCategoryThumb" alt="">
 
-          <div class="bg-[#FFFFFF99] text-start py-3 px-4">
-            <h4 class="font-bold text-[20px]">{{ meal.strCategory }}</h4>
+          static sm:static 
+          
+       
+          md:absolute md:left-1/2 md:-translate-x-1/2 
+          md:-bottom-20 lg:-bottom-24
+          
+          w-full
+        ">
 
-            <div class="flex items-center mt-2  gap-4">
-              <h2 class="text-[#ff4500] font-bold">Read More</h2>
-              <i class="fa-solid fa-up-right-from-square rounded-full
-              px-5 py-2
-              flex justify-center items-center  h-10 w-10  text-white bg-[#ff4500]"></i>
+          @for (meal of meals; track meal.idCategory) {
+            <div class="border border-default rounded-xl shadow-lg  overflow-hidden">
+              <img class="w-full h-65 bg-white object-contain" [src]="meal.strCategoryThumb" alt="">
+
+              <div class="bg-[#FFFFFF99] text-start py-3 px-4">
+                <h4 class="font-bold text-[20px]">{{ meal.strCategory }}</h4>
+
+                <div class="flex items-center gap-4">
+                  <h2 class="text-[#ff4500] font-bold">Read More</h2>
+                  <i class="fa-solid fa-up-right-from-square
+                    flex justify-center items-center  px-5 py-3
+                    h-10 w-10
+                    text-white bg-[#ff4500] rounded-full"></i>
+                </div>
+              </div>
             </div>
+          }
 
-          </div>
         </div>
-      }
+
+      </div>
 
     </div>
-
-
-
-
-
-    </div>
-      
-    </div>
-
-    
-    
-
-    
-    
-    
+  </div>
 
  
+  <div class="hidden md:block h-60"></div>
+
 </section>

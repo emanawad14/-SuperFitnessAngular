@@ -11,28 +11,37 @@ import { ImusclesId } from '../../shared/interfaces/musclesid/imusclesid.interfa
 })
 export class WorkoutsComponent implements OnInit {
 
-  selectedMuscle: string = 'Full Body';
+  selectedMuscle: string = '';
   muscles: Imuscles[] = [];
   muscleCards: ImusclesId[] = []; 
   private readonly musclesgroupService = inject(MusclesgroupService);
   private readonly musclesIdService = inject(MusclesIdService);
 
-  ngOnInit(): void {
-    this.getAllMuscles();
-  }
+ ngOnInit(): void {
+  this.getAllMuscles();
+}
 
-  getAllMuscles() {
-    this.musclesgroupService.getAllMusclesGroup().subscribe({
-      next: (res) => {
-        this.muscles = res.musclesGroup.slice(0, 7);
-      },
-      error: (err) => console.log(err)
-    });
-  }
+getAllMuscles() {
+  this.musclesgroupService.getAllMusclesGroup().subscribe({
+    next: (res) => {
+      this.muscles = res.musclesGroup.slice(0, 7);
+
+     
+      if (this.muscles.length > 0) {
+        const first = this.muscles[0];
+        this.selectedMuscle = first.name;
+        this.getIdMuscles(first._id);
+      }
+    },
+    error: (err) => console.log(err)
+  });
+}
+
 
   getIdMuscles(id: string) {
     this.musclesIdService.getAllMusclesGroupID(id).subscribe({
       next: (res) => {
+        console.log("muscle cards = ", res);
         this.muscleCards = res.muscles
       },
       error: (err) => console.log(err)
