@@ -1,0 +1,62 @@
+<section class="image text-center">
+  <div>
+
+    <div class="flex flex-col items-center gap-2 mb-4 py-6 text-center">
+      <img src="/images/Why us.png" alt="" class="w-auto h-auto">
+
+      
+      
+    </div>
+
+    <div class="bg-[#FFFFFF99] py-7 h-auto">
+
+      <div class="flex items-center gap-2 justify-center">
+        <i class="fa-solid fa-dumbbell text-[#ff4500] text-[20px]"></i>
+        <span class="font-semibold tracking-wide text-[#ff4500]">
+          fitness class
+        </span>
+      </div>
+
+      <h1 class="text-[40px] font-bold leading-tight mb-4">
+        Transform Your Body with Our <br>
+        Dynamic <span class="text-[#ff4500]">Upcoming Workouts</span>
+      </h1>
+
+
+      <ul class="flex flex-wrap justify-center items-center gap-4 px-4">
+        @for (m of muscles; track m._id) {
+          <li>
+            <button
+              class="py-2 px-6 font-semibold text-black rounded-full"
+              (click)="setActive(m.name, m._id)"
+              [class.bg-[#ff4500]]="selectedMuscle === m.name"
+              [class.text-white]="selectedMuscle === m.name"
+              [class.text-[#ff4500]]="selectedMuscle !== m.name"
+            >
+              {{ m.name }}
+            </button>
+          </li>
+        }
+      </ul>
+
+      <!-- CARDS SECTION -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-10 px-6">
+        @for (card of muscleCards; track card._id) {
+          <div class="border border-default rounded-base shadow-md">
+            <img class="rounded-t-base w-full h-60 object-cover" [src]="card.image" alt="">
+            <div class="bg-[#FFFFFF99] text-start py-3 px-4">
+              <h4 class="font-bold text-[20px]">{{ card.name }}</h4>
+
+              <div class="flex items-center mt-2 gap-4">
+                <h2 class="text-[#ff4500] font-bold">Explore</h2>
+                <i class="fa-solid fa-up-right-from-square"></i>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+
+    </div>
+
+  </div>
+</section>
