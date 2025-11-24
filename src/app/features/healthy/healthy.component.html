@@ -35,23 +35,15 @@
           w-full
         ">
 
-          @for (meal of meals; track meal.idCategory) {
-            <div class="border border-default rounded-xl shadow-lg  overflow-hidden">
-              <img class="w-full h-65 bg-white object-contain" [src]="meal.strCategoryThumb" alt="">
+        @for (meal of meals; track meal.idCategory) {
+  <app-cards
+    [image]="meal.strCategoryThumb"
+    [title]="meal.strCategory"
+    actionText="Read More"
+    icon="fa-solid fa-up-right-from-square"
+  />
+}
 
-              <div class="bg-[#FFFFFF99] text-start py-3 px-4">
-                <h4 class="font-bold text-[20px]">{{ meal.strCategory }}</h4>
-
-                <div class="flex items-center gap-4">
-                  <h2 class="text-[#ff4500] font-bold">Read More</h2>
-                  <i class="fa-solid fa-up-right-from-square
-                    flex justify-center items-center  px-5 py-3
-                    h-10 w-10
-                    text-white bg-[#ff4500] rounded-full"></i>
-                </div>
-              </div>
-            </div>
-          }
 
         </div>
 

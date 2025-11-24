@@ -1,14 +1,18 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { HealthyService } from '../../core/services/healthy/healthy.service';
 import { Ihealthy } from '../../shared/interfaces/healthy/ihealthy.interface';
+import { Subscription } from 'rxjs';
+import { CardsComponent } from "../../shared/components/cards/cards.component";
 
 @Component({
   selector: 'app-healthy',
-  imports: [],
+  imports: [CardsComponent],
   templateUrl: './healthy.component.html',
   styleUrl: './healthy.component.scss',
 })
-export class HealthyComponent implements OnInit {
+export class HealthyComponent implements OnInit , OnDestroy {
+  subscription1?: Subscription;
+
 
 
   meals:Ihealthy[]=[]
@@ -20,7 +24,7 @@ export class HealthyComponent implements OnInit {
 
   getCategories()
   {
-    this.healthyService.getMealsCategories().subscribe(
+  this.subscription1=  this.healthyService.getMealsCategories().subscribe(
       {
         next:(res)=>
         {
@@ -38,5 +42,10 @@ export class HealthyComponent implements OnInit {
         }
       }
     )
+  }
+
+
+  ngOnDestroy(): void {
+      this.subscription1?.unsubscribe()
   }
 }

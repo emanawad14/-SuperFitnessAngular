@@ -1,0 +1,16 @@
+<ul class="flex flex-wrap justify-center items-center gap-4">
+  @for (tab of tabs; track tab.id) {
+    <li>
+      <button
+        class="py-2 px-6 font-semibold rounded-full transition duration-200"
+        (click)="setActiveTab(tab)"
+        [ngClass]="{
+          'bg-[#ff4500] text-white': activeTab === tab.name,
+          'text-black font-bold': activeTab !== tab.name
+        }"
+      >
+        {{ tab.name }}
+      </button>
+    </li>
+  }
+</ul>

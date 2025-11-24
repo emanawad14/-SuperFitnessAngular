@@ -1,74 +1,52 @@
 <section class="image text-center relative">
+
+  <div class="flex flex-col items-center gap-2 py-6 text-center">
+    <img src="/images/Why us.png" alt="" class="w-auto" />
+  </div>
+
+  <div class="bg-[#FFFFFF99] w-full py-10 relative px-4">
+
   
+    <div class="flex items-center justify-center gap-2">
+      <i class="fa-solid fa-dumbbell text-[#ff4500] text-[20px]"></i>
+      <span class="font-semibold tracking-wide text-[#ff4500]">
+        fitness class
+      </span>
+    </div>
 
-    <div class="flex flex-col items-center gap-2 py-6 text-center">
-      <img src="/images/Why us.png" alt="" class="w-auto ">
+    <h1
+      class="text-[28px] sm:text-[30px] md:text-[40px] uppercase font-bold leading-tight mb-10 px-4"
+    >
+      Transform Your Body with Our <br />
+      Dynamic <span class="text-[#ff4500]">Upcoming Workouts</span>
+    </h1>
 
-      
-      
-    
+ 
+    <ul class="flex flex-wrap justify-center items-center mb-10 sm:mb-16 md:mb-60 px-4 gap-4">
+      <app-tabs
+        [tabs]="muscles"
+        [activeTab]="selectedMuscle"
+        (tabClick)="setActive($event.name, $event.id)"
+      ></app-tabs>
+    </ul>
 
-    <div class="bg-[#FFFFFF99] w-full py-10 relative px-4">
-
-      <div class="flex items-center justify-center gap-2">
-        <i class="fa-solid fa-dumbbell text-[#ff4500] text-[20px]"></i>
-        <span class="font-semibold tracking-wide text-[#ff4500]">
-          fitness class
-        </span>
-      </div>
-
-      <h1 class="text-[28px] sm:text-[30px] md:text-[40px] uppercase font-bold leading-tight 
-                 mb-10  px-4">
-        Transform Your Body with Our <br>
-        Dynamic <span class="text-[#ff4500]">Upcoming Workouts</span>
-      </h1>
-
-
-      <ul class="flex flex-wrap justify-center items-center mb-10 sm:mb-16 md:mb-60 px-4 gap-4 ">
-        @for (m of muscles; track m._id) {
-          <li>
-            <button
-              class="py-2 px-6 font-semibold text-black rounded-full"
-              (click)="setActive(m.name, m._id)"
-              [class.bg-[#ff4500]]="selectedMuscle === m.name"
-              [class.text-white]="selectedMuscle === m.name"
-              [class.text-[#ff4500]]="selectedMuscle !== m.name"
-            >
-              {{ m.name }}
-            </button>
-          </li>
-        }
-      </ul>
-
-      
-      <div class=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 
-          gap-6 
-          
-
-          static sm:static 
-          
-       
-          md:absolute md:left-1/2 md:-translate-x-1/2 
-          md:-bottom-20 lg:-bottom-24
-          
-          w-full">
-        @for (card of muscleCards; track card._id) {
-          <div class="border border-default rounded-base shadow-md">
-            <img class="rounded-t-base w-full h-60 object-cover" [src]="card.image" alt="">
-            <div class="bg-[#FFFFFF99] text-start py-3 px-4">
-              <h4 class="font-bold text-[20px]">{{ card.name }}</h4>
-
-              <div class="flex items-center mt-2 gap-4">
-                <h2 class="text-[#ff4500] font-bold">Explore</h2>
-                <i class="fa-solid fa-up-right-from-square"></i>
-              </div>
-            </div>
-          </div>
-        }
-      </div>
+ 
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6
+      static sm:static md:absolute
+      md:left-1/2 md:-translate-x-1/2 md:-bottom-20 lg:-bottom-24 w-full"
+    >@for (card of muscleCards; track card._id) {
+  <app-cards
+    [image]="card.image"
+    [title]="card.name"
+    actionText="Explore"
+    icon="fa-solid fa-up-right-from-square"
+  />
+}
 
     </div>
-     </div>
- <div class="hidden md:block h-60"></div>
 
+  </div>
+
+  <div class="hidden md:block h-60"></div>
 </section>

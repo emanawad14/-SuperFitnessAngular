@@ -1,83 +1,48 @@
-<nav
-  class="fixed w-full  bg-[#FFFFFF99] z-20 top-0 start-0 "
-  
-  
->
+<nav class="fixed w-full bg-[#FFFFFF99] z-20 top-0 start-0 shadow-md">
   <div class="max-w-screen-xl mx-auto flex items-center justify-between p-4">
 
-
+  
     <a href="#" class="flex items-center space-x-2 rtl:space-x-reverse">
       <img src="/images/fit 1.png" class="h-10" alt="Logo" />
     </a>
 
    
-    <button id="menu-toggle" type="button"
-      class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-body rounded-base md:hidden hover:bg-neutral-secondary-soft">
-      <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24">
+    <button type="button"
+      class="inline-flex items-center justify-center p-2 w-12 h-12 rounded-full md:hidden bg-white/70 hover:bg-white/90 shadow"
+      (click)="toggleMobileMenu()">
+      <svg class="w-6 h-6 text-[#e63e00]" fill="none" viewBox="0 0 24 24">
         <path stroke="currentColor" stroke-width="2" stroke-linecap="round"
           d="M4 6h16M4 12h16M4 18h16" />
       </svg>
     </button>
 
-   
-    <div id="menu" class="hidden md:flex items-center justify-between w-full">
 
+    <div class="hidden md:flex items-center justify-between w-full">
       <ul class="flex mx-auto space-x-20 rtl:space-x-reverse font-semibold">
-        <li><a href="#" class="font-bold text-[#e63e00] hover:text-[#e63e00]">Home</a></li>
-        <li><a href="#" class="font-bold hover:text-[#e63e00]">About</a></li>
-        <li><a href="#" class="font-bold hover:text-[#e63e00]">Classes</a></li>
-        <li><a href="#" class="font-bold hover:text-[#e63e00]">Healthy</a></li>
+        <li><a href="#" class="font-bold text-[#e63e00] hover:text-[#ff5500]">Home</a></li>
+        <li><a href="#" class="font-bold hover:text-[#ff5500]">About</a></li>
+        <li><a href="#" class="font-bold hover:text-[#ff5500]">Classes</a></li>
+        <li><a href="#" class="font-bold hover:text-[#ff5500]">Healthy</a></li>
       </ul>
 
-      <div class="flex items-center gap-12">
-       
-        <div class="relative">
-          <button class="bg-[#e63e00] text-white px-6 py-2 rounded-full font-semibold">
-            LOG IN
-          </button>
-          <div class="absolute -right-7 top-1/2 -translate-y-1/2">
-            <div class="bg-[#e63e00] text-white p-2 rounded-full border border-white shadow-lg flex items-center justify-center w-10 h-10">
-              <i class="fa-solid fa-up-right-from-square"></i>
-            </div>
-          </div>
-        </div>
-
-       
-        <div class="relative">
-          <button class="bg-white/80 border border-[#e63e00]
-           text-[#e63e00] px-6 py-2 rounded-full font-semibold">
-            SIGN UP
-          </button>
-          <div class="absolute -right-7 top-1/2 -translate-y-1/2">
-            <div class="bg-[#e63e00] text-white p-2 rounded-full border 
-            border-white shadow-lg flex items-center justify-center w-10 h-10">
-              <i class="fa-solid fa-up-right-from-square"></i>
-            </div>
-          </div>
-        </div>
+      <div class="flex items-center gap-10">
+        <app-button type="login" text="LOG IN"></app-button>
+        <app-button type="signup" text="SIGN UP"></app-button>
       </div>
-
     </div>
-
   </div>
 
+  
+  <div [class.hidden]="!mobileMenuOpen"
+       class="md:hidden p-6 space-y-4 border-t bg-white/95 shadow-lg rounded-b-xl">
+    <a class="block text-lg font-semibold hover:text-[#e63e00]">Home</a>
+    <a class="block text-lg font-semibold hover:text-[#e63e00]">About</a>
+    <a class="block text-lg font-semibold hover:text-[#e63e00]">Classes</a>
+    <a class="block text-lg font-semibold hover:text-[#e63e00]">Healthy</a>
 
-  <div id="mobile-menu" class="hidden p-4 space-y-3 border-t md:hidden bg-neutral-secondary-soft">
-    <a class="block hover:text-[#e63e00]">Home</a>
-    <a class="block hover:text-[#e63e00]">About</a>
-    <a class="block hover:text-[#e63e00]">Classes</a>
-    <a class="block hover:text-[#e63e00]">Healthy</a>
-    <div class="pt-3 border-t">
-      <button class="w-full bg-[#e63e00] text-white py-2 rounded-full">Login</button>
-      <button class="w-full bg-white/90 border border-[#e63e00] text-[#e63e00] py-2 rounded-full mt-2">Sign Up</button>
+    <div class="pt-4 flex flex-col gap-3">
+      <app-button type="login" text="LOG IN"></app-button>
+      <app-button type="signup" text="SIGN UP"></app-button>
     </div>
   </div>
 </nav>
-
-
-<!-- 
-style="
-    background:
-      radial-gradient(circle at 20% 60%, rgba(200,210,216,0.85) , transparent 20%),
-      linear-gradient(90deg, rgba(200,210,216,0.85) 0%, rgba(220,224,226,0.7) 40%, rgba(200,210,216,0.85) 100%);
-  " -->

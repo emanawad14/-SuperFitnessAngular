@@ -4,10 +4,11 @@ import { AboutComponent } from "../about/about.component";
 import { WorkoutsComponent } from "../workouts/workouts.component";
 import { HealthyComponent } from "../healthy/healthy.component";
 import { SliderComponent } from "../../shared/components/slider/slider.component";
+import { ButtonComponent } from "../../shared/components/button/button.component";
 
 @Component({
   selector: 'app-home',
-  imports: [WhyusComponent, AboutComponent, WorkoutsComponent, HealthyComponent, SliderComponent],
+  imports: [WhyusComponent, AboutComponent, WorkoutsComponent, HealthyComponent, SliderComponent, ButtonComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
