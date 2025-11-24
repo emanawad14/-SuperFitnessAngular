@@ -1,0 +1,21 @@
+<div class="border border-default rounded-xl shadow-lg overflow-hidden">
+  <img
+    class="w-full h-60 object-cover bg-white"
+    [src]="image"
+    [alt]="title"
+  />
+
+  <div class="bg-[#FFFFFF99] text-start py-3 px-4">
+    <h4 class="font-bold text-[20px]">{{ title }}</h4>
+
+    <div class="flex items-center mt-2 gap-4">
+      <h2 class="text-[#ff4500] font-bold">{{ actionText }}</h2>
+
+      <i class="{{ icon }}
+        flex justify-center items-center px-4 py-2
+        h-10 w-10 text-white bg-[#ff4500] rounded-full
+      "></i>
+    </div>
+  </div>
+</div>
+
