@@ -1,1 +1,106 @@
-<p>register works!</p>
+<auth-wrapper>
+  <!-- step 0 register form -->
+@switch (currentStep) {
+  @case (0) {
+  <app-form-layout [formGroup]="registerForm" class="w-1/2" [title]="'Hey There'" [subtitle]="'Create An Account'" [formtitle]="'Register'" [helpertext]="'Already have an account ?'" [helperlink]="'login'" [forgetLink]="'Forgot Password?'">
+
+  
+
+       <custom-input formControlName="firstName" [label]="'First Name'" [type]="'text'" [placeholder]="'Enter your First Name'" [icon]="'pi pi-user'" inputs ></custom-input>
+       <custom-input formControlName="lastName" [label]="'Last Name'" [type]="'text'" [placeholder]="'Enter your Last Name'" [icon]="'pi pi-user'" inputs ></custom-input>
+       <custom-input formControlName="email" [label]="'Email'" [type]="'email'" [placeholder]="'Enter your Email'" [icon]="'pi pi-envelope'" inputs ></custom-input>
+       <custom-input formControlName="password" [label]="'Password'" [type]="'password'" [placeholder]="'Enter your Password'" [icon]="'pi pi-lock'" [passIcon]="'pi pi-eye'" inputs ></custom-input>
+       <custom-input formControlName="rePassword" [label]="'rePassword'" [type]="'password'" [placeholder]="' rePassword'" [icon]="'pi pi-lock'" [passIcon]="'pi pi-eye'" inputs ></custom-input>
+
+        <custom-button [disabled]="registerForm.invalid" [isloading]="isloading" [label]="'Register'"   (click)="incrementStep()" submit></custom-button>
+       <app-auth-or-divider divider></app-auth-or-divider>
+       <app-social-buttons social></app-social-buttons>
+  </app-form-layout>
+  }
+<!-- step 1 gender -->
+ @case (1) {
+   <app-steps-layout class="w-1/2"  [title]="'TELL US ABOUT YOURSELF!'" [subtitle]="'We need to know your gender'" [totalSteps]="totalSteps" [currentStep]="currentStep">
+     <app-gender-step  class="w-full flex justify-center mb-4" (genderChange)="onGenderSelected($event)" ></app-gender-step>
+    <custom-button [disabled]="!registerForm.get('gender')?.value" [label]="'Next'"   class="w-full max-w-md"   (click)="incrementStep()"></custom-button>
+
+  </app-steps-layout>
+  }
+  <!-- step 2 age -->
+  @case (2) {
+    
+   <app-steps-layout class="w-1/2"  [title]="'How Old Are you ?'" [subtitle]="'this helps us create Your personalized plan'" [totalSteps]="totalSteps" [currentStep]="currentStep">
+      <app-metric-step
+      [(value)]="age"
+        (valueChange)="onAgeChange($event)"
+
+      [min]="10"
+      [max]="80"
+      unit="years">
+    </app-metric-step>
+
+        <custom-button   [label]="'Next'"   class="w-full max-w-md"   (click)="incrementStep()"></custom-button>
+      </app-steps-layout>
+  }
+  <!-- step 3 weight -->
+  @case (3) {
+   <app-steps-layout class="w-1/2"  [title]="'what is your weight ?'" [subtitle]="'this helps us create Your personalized plan'" [totalSteps]="totalSteps" [currentStep]="currentStep">
+     <app-metric-step
+      [(value)]="weight"
+        (valueChange)="onWeightChange($event)"
+
+      [min]="40"
+      [max]="200"
+      unit="kg">
+      </app-metric-step>
+
+     <custom-button   [label]="'Next'"   class="w-full max-w-md"   (click)="incrementStep()"></custom-button>
+    </app-steps-layout>
+  }
+  <!-- step 4 height -->
+  @case (4) {
+
+   <app-steps-layout class="w-1/2"  [title]="' what is your height ?'" [subtitle]="'this helps us create Your personalized plan'" [totalSteps]="totalSteps" [currentStep]="currentStep">
+      <app-metric-step
+      [(value)]="height"
+      (valueChange)="onHeightChange($event)"
+
+      [min]="120"
+      [max]="220"
+      unit="cm">
+    </app-metric-step>
+
+          <custom-button   [label]="'Next'"   class="w-full max-w-md"   (click)="incrementStep()"></custom-button>
+  </app-steps-layout>
+  }
+  <!-- step 5 goal -->
+  @case (5) {
+    
+   <app-steps-layout class="w-1/2"  [title]="' What is Your Goal?'" [subtitle]="'this helps us create Your personalized plan'" [totalSteps]="totalSteps" [currentStep]="currentStep">
+     <app-select-step class="w-full flex justify-center mb-4" (selectedChange)="onGoalSelected($event)" [options]="[
+  'Gain Weight',
+  'Lose Weight',
+  'Get Fitter',
+  'Gain More Flexible',
+  'Learn The Basic'
+    ]"> </app-select-step>
+    <custom-button [disabled]="!registerForm.get('goal')?.value" [label]="'Next'"   class="w-full max-w-md"   (click)="incrementStep()"></custom-button>
+   </app-steps-layout>
+  }
+  <!-- step 6 activity -->
+  @case (6) {
+ 
+   <app-steps-layout class="w-1/2"  [title]="' your regular physical activity level ?'" [subtitle]="'this helps us create Your personalized plan'" [totalSteps]="totalSteps" [currentStep]="currentStep">
+      <app-select-step class="w-full flex justify-center mb-4" (selectedChange)="onActivitySelected($event)" [options]="[
+  'level1',
+  'level2',
+  'level3',
+  'level4',
+  'level5'
+]"> </app-select-step>    
+    <custom-button [disabled]="!registerForm.get('activityLevel')?.value" [label]="'Next'"   class="w-full max-w-md" (click)="onSubmit()"   ></custom-button>
+  </app-steps-layout>
+  }
+}
+</auth-wrapper>
+
+ 

@@ -1,0 +1,29 @@
+<div class="space-y-3 w-full max-w-sm">
+    @for (item of options; track $index) {
+        <button
+          
+          pButton
+          type="button"
+          (click)="selected = item"
+          (click)="setSelected(selected)"
+          class="w-full max-w-sm flex items-center justify-between rounded-full px-5 py-4 
+                bg-[#D3D3D333] text-primary border transition-all
+                hover:border-orange-500"
+          [ngClass]="{
+            'border-primary': selected !== item,
+            'border-secondary shadow-[0_0_0_1px_rgba(255,90,31,0.4)]': selected === item
+          }"
+        >
+    <span>{{ item }}</span>
+
+    <!-- Circle -->
+    <span
+      class="w-4 h-4 rounded-full border-2 transition-all"
+      [ngClass]="{
+        'border-primary': selected !== item,
+        'border-secondary bg-secondary': selected === item
+      }"
+    ></span>
+  </button>
+}
+</div>

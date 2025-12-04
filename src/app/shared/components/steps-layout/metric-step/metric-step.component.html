@@ -1,0 +1,42 @@
+ 
+<div class="w-full max-w-[600px] p-4 rounded-xl bg-transparent">
+  
+  <div class="relative mb-4">
+    
+    <!-- UNIT -->
+    <div class="text-center text-secondary text-xl uppercase tracking-widest mt-2">
+      {{ unit() }}
+    </div>
+
+    <!-- NUMBERS ROW -->
+    <div
+      class="flex justify-center items-baseline gap-4 mb-2 cursor-grab select-none py-4 active:cursor-grabbing"
+      (wheel)="onWheel($event)"
+      (mousedown)="onMouseDown($event)"
+      (mousemove)="onMouseMove($event)"
+      (mouseup)="onMouseUp()"
+      (mouseleave)="onMouseUp()"
+      (touchstart)="onTouchStart($event)"
+      (touchmove)="onTouchMove($event)"
+      (touchend)="onTouchEnd()"
+    >
+      @for (v of visibleValues(); track v) {
+        <span
+          class="min-w-[2.5rem] text-center font-semibold transition-all duration-300 ease-in-out text-white text-xl pointer-events-none"
+          [class.text-4xl]="v === value()"
+           [class.scale-250]="v === value()"
+          [style.opacity]="getOpacity(v)"
+ 
+    
+        >
+          {{ v }}
+        </span>
+      }
+    </div>
+  </div>
+
+  <!-- ARROW -->
+  <div class="text-center text-secondary text-2xl">
+     <i class="fa-solid fa-caret-up"></i>
+  </div>
+</div>

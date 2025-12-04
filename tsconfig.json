@@ -11,6 +11,17 @@
     "skipLibCheck": true,
     "isolatedModules": true,
     "experimentalDecorators": true,
+    "paths": {
+      "auth": [
+        "./dist/auth"
+      ],
+      "shared-ui": [
+        "./dist/shared-ui"
+      ],
+      "shared-utils": [
+        "./dist/shared-utils"
+      ]
+    },
     "importHelpers": true,
     "target": "ES2022",
     "module": "preserve"
@@ -29,6 +40,19 @@
     },
     {
       "path": "./tsconfig.spec.json"
+    },
+     
+    {
+      "path": "./projects/auth/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/auth/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/shared-utils/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/shared-utils/tsconfig.spec.json"
     }
   ]
 }

@@ -1,0 +1,19 @@
+<div class=" flex flex-1 flex-col items-center justify-center text-primary">
+       <div
+            class="relative w-16 h-16 rounded-full flex items-center justify-center"
+            [style.background]="
+                'conic-gradient(#f97316 ' + ((currentStep/totalSteps)*100) + '%, #111 ' + (currentStep) + '%, rgba(255,255,255,.15) 0)'
+            ">
+            <div class="absolute w-12 h-12 bg-[#111] rounded-full flex items-center justify-center">
+                <span class="text-white text-sm font-semibold">
+                {{ currentStep }}/{{ totalSteps }}
+                </span>
+            </div>
+        </div>
+
+        <h2 class="text-4xl font-bold mb-4">{{title}}</h2>
+        <p class="mb-6 text-lg">{{subtitle}}</p>
+            <ng-content></ng-content>
+              
+
+</div>
