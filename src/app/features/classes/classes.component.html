@@ -1,0 +1,62 @@
+<section class="py-30">
+  
+
+  <div class="flex justify-center mb-10">
+    <img src="/images/WOrkouts.png" class="w-auto" alt="Workouts">
+  </div>
+
+
+  <div class="flex justify-center">
+    <app-tabs
+      [tabs]="muscles"
+      [activeTab]="selectedMuscle"
+      (tabClick)="setActive($event.name, $event.id)"
+    ></app-tabs>
+  </div>
+
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
+
+    <div>
+
+     
+      @if (loading) {
+        <p class="text-center text-blue-500 text-lg py-6">loading</p>
+      }
+
+     
+      @else if (exercies.length === 0) {
+        <p class="text-center text-red-500 text-lg py-6">no data </p>
+      }
+
+      
+      @else {
+        @for (item of exercies; track item._id) {
+          <img 
+            [src]="item.short_youtube_demonstration" 
+            alt="Exercise Image"
+            class="w-full rounded-xl shadow-md mb-6"
+          >
+        }
+      }
+
+    </div>
+
+
+    <div>
+      
+    </div>
+
+  </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+

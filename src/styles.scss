@@ -10,6 +10,44 @@
 @import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
 
 
+.owl-nav button {
+  @apply bg-[#ff4500] text-white rounded-full w-10 h-10 flex items-center justify-center;
+}
+
+.owl-nav {
+  @apply flex items-center gap-4;
+}
+
+
+.owl-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.owl-nav button {
+  pointer-events: all;
+  background: #ff4500 !important;
+  color: white !important;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.active-link {
+  @apply text-[#e63e00] font-bold;
+}
+
+
+
 // @font-face {
 //   font-family: "Baloo";
 //   src: url("/assets/fonts/BalooThambi2-Regular.ttf");
