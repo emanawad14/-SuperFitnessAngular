@@ -1,1 +1,18 @@
-<p>login works!</p>
+<auth-wrapper>
+  <app-form-layout [formGroup]="login" class="w-1/2" [title]="'Hey There'" [subtitle]="'Welcome Back'" [formtitle]="'Login'" [helpertext]="'Dont have an account yet ?'" [helperlink]="'register'" [forgetLink]="'Forgot Password?'" >
+
+  
+       <custom-input formControlName="email" [label]="'Email'" [type]="'email'" [placeholder]="'Enter your Email'" [icon]="'pi pi-envelope'"  inputs ></custom-input>
+        
+       <custom-input formControlName="password" [label]="'Password'" [type]="'password'" [placeholder]="'Enter your Password'" [icon]="'pi pi-lock'" [passIcon]="'pi pi-eye'" inputs ></custom-input>
+ 
+       <custom-button 
+       [disabled]="login.invalid"
+       [isloading]="isloading"
+       [label]="'login'"
+        (onClick)="onSubmit()"
+         submit></custom-button>
+       <app-auth-or-divider divider></app-auth-or-divider>
+       <app-social-buttons social></app-social-buttons>
+  </app-form-layout>
+</auth-wrapper>

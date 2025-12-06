@@ -1,0 +1,34 @@
+ <div class="flex  flex-col  gap-4 mb-4">
+
+    <button
+          type="button"
+          (click)="selectGender('male')"
+          [ngClass]="selectedGender === 'male'
+            ? 'bg-secondary border-secondary text-primary'
+            : 'border-primary text-primary hover:bg-secondary hover:border-secondary hover:text-primary'"
+
+          class="cursor-pointer border py-2 px-6 rounded-full transition-all duration-200
+                flex flex-col items-center gap-1">
+
+          <i class="fa-solid fa-mars text-lg"></i>
+          <div class="text-sm font-medium">Male</div>
+      </button>
+
+
+<button
+  type="button"
+  (click)="selectGender('female')"
+  [ngClass]="selectedGender === 'female'
+    ? 'bg-secondary border-secondary text-primary'
+    : 'border-primary text-primary hover:bg-secondary hover:border-secondary hover:text-primary'"
+
+  class="cursor-pointer border py-2 px-6 rounded-full transition-all duration-200
+         flex flex-col items-center gap-1">
+
+  <i class="fa-solid fa-venus text-lg"></i>
+  <div class="text-sm font-medium">Female</div>
+</button>
+
+
+</div>   
+ 
