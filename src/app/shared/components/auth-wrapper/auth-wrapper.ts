@@ -7,6 +7,5 @@ import { Component, Input } from '@angular/core';
   styleUrl: './auth-wrapper.css',
 })
 export class AuthWrapper {
-  @Input() title!: string;
-
+  
 }
