@@ -6,12 +6,13 @@ import { ImusclesId } from '../../shared/interfaces/musclesid/imusclesid.interfa
 import { Subscription } from 'rxjs';
 import { TabsComponent } from "../../shared/components/tabs/tabs.component";
 import { CardsComponent } from "../../shared/components/cards/cards.component";
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-workouts',
   templateUrl: './workouts.component.html',
   styleUrls: ['./workouts.component.scss'],
-  imports: [TabsComponent, CardsComponent]
+  imports: [TabsComponent, CardsComponent, RouterLink]
 })
 export class WorkoutsComponent implements OnInit, OnDestroy {
 

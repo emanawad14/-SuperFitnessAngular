@@ -1,16 +1,32 @@
-<ul class="flex flex-wrap justify-center items-center gap-4">
+<!-- <ul class="flex flex-wrap justify-center items-center gap-4">
   @for (tab of tabs; track tab.id) {
     <li>
       <button
-        class="py-2 px-6 font-semibold rounded-full transition duration-200"
+        class="py-2 px-6 text-[18px] font-bold font-semibold rounded-full transition duration-200 "
         (click)="setActiveTab(tab)"
         [ngClass]="{
-          'bg-[#ff4500] text-white': activeTab === tab.name,
-          'text-black font-bold': activeTab !== tab.name
+          'bg-[#ff4500] text-white border-[#ff4500]': activeTab === tab.name,
+          'text-black ': activeTab !== tab.name
         }"
       >
         {{ tab.name }}
       </button>
     </li>
   }
-</ul>
+</ul> -->
+<div class="relative w-full">
+  <owl-carousel-o [options]="carouselOptions" class="tabs-carousel">
+    <ng-template carouselSlide *ngFor="let tab of tabs">
+        <button
+          class="py-2 px-6 text-[18px] font-bold rounded-full transition duration-200 whitespace-nowrap"
+          (click)="setActiveTab(tab)"
+          [ngClass]="{
+            'bg-[#ff4500] text-white border-[#ff4500]': activeTab === tab.name,
+            'text-black': activeTab !== tab.name
+          }"
+        >
+          {{ tab.name }}
+        </button>
+    </ng-template>
+  </owl-carousel-o>
+</div>

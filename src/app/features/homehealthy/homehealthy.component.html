@@ -14,20 +14,14 @@
       </div>
 
       <h1 class="text-[28px] sm:text-[30px] md:text-[40px] uppercase font-bold leading-tight 
-                 mb-10 sm:mb-16 md:mb-10 px-4">
+                 mb-10 sm:mb-16 md:mb-60 px-4">
         Fuel your fitness journey with <br>
         customized <span class="text-[#ff4500]">meal plans</span> for you
       </h1>
 
       
-      <ul class="flex flex-wrap justify-center items-center mb-10 sm:mb-16 md:mb-60 px-4 gap-4">
-       <app-tabs
-  [tabs]="categories"
-  [activeTab]="selectedCategory"
-  (tabClick)="setActive($event.name, $event.id)"
-></app-tabs>
-
-      </ul>
+    
+      
 
      
       <div class="max-w-6xl mx-auto px-4">
@@ -40,10 +34,10 @@
           w-full
         ">
 
-      @for (item of subCategory; track item.idMeal) {
+      @for (item of meals; track item.idCategory) {
   <app-cards
-    [image]="item.strMealThumb"
-    [title]="item.strMeal"
+    [image]="item.strCategoryThumb"
+    [title]="item.strCategory"
     actionText="Read More"
     icon="fa-solid fa-up-right-from-square"
   />
@@ -59,3 +53,4 @@
   <div class="hidden md:block h-60"></div>
 
 </section>
+
