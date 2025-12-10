@@ -12,3 +12,17 @@ export interface Ihealthy {
 export interface ICategoriesResponse {
   categories: Ihealthy[];
 }
+
+
+
+
+
+export interface IMealItem {
+  idMeal: string;
+  strMeal: string;
+  strMealThumb: string;
+}
+
+export interface IMealResponse {
+  meals: IMealItem[];
+}

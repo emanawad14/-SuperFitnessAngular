@@ -1,51 +1,63 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
-import { HealthyService } from '../../core/services/healthy/healthy.service';
-import { Ihealthy } from '../../shared/interfaces/healthy/ihealthy.interface';
+import { Component, inject, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { HealthyService } from '../../core/services/healthy/healthy.service';
+import { TabsComponent } from "../../shared/components/tabs/tabs.component";
 import { CardsComponent } from "../../shared/components/cards/cards.component";
-
+import {  IMealItem } from '../../shared/interfaces/healthy/ihealthy.interface';
 @Component({
   selector: 'app-healthy',
-  imports: [CardsComponent],
   templateUrl: './healthy.component.html',
-  styleUrl: './healthy.component.scss',
+  styleUrls: ['./healthy.component.scss'],
+  imports: [TabsComponent, CardsComponent]
 })
-export class HealthyComponent implements OnInit , OnDestroy {
-  subscription1?: Subscription;
+export class HealthyComponent implements OnInit, OnDestroy {
 
+  categories: { id: string; name: string }[] = [];
+  subCategory: IMealItem[] = [];
+  selectedCategory: string = '';
 
+  private healthyService = inject(HealthyService);
+  sub1?: Subscription;
+  sub2?: Subscription;
 
-  meals:Ihealthy[]=[]
-  private readonly healthyService=inject(HealthyService)
-
-  ngOnInit(): void {
-      this.getCategories()
+  ngOnInit() {
+    this.getCategories();
   }
 
-  getCategories()
-  {
-  this.subscription1=  this.healthyService.getMealsCategories().subscribe(
-      {
-        next:(res)=>
-        {
-          console.log(res);
-          this.meals = res.categories.slice(0,3)
+  getCategories() {
+    this.sub1 = this.healthyService.getMealsCategories().subscribe({
+      next: (res) => {
+        this.categories = res.categories.map(c => ({
+          id: c.idCategory,
+          name: c.strCategory
+        }));
 
-          
-
-        },
-        error:(err)=>
-        {
-          console.log(err);
-          
-
+        if (this.categories.length > 0) {
+          const first = this.categories[0];
+          this.selectedCategory = first.name;
+          this.getSubCategory(first.name);
         }
-      }
-    )
+      },
+      error: (err) => console.log(err)
+    });
   }
+getSubCategory(categoryName: string) {
+  this.sub2 = this.healthyService.getByCategory(categoryName).subscribe({
+    next: (res) => {
+      this.subCategory = res.meals ? res.meals.slice(0, 3) : [];
+    },
+    error: (err) => console.log(err)
+  });
+}
+
+ setActive(name: string, id: string) {
+  this.selectedCategory = name;     
+  this.getSubCategory(name);        
+}
 
 
-  ngOnDestroy(): void {
-      this.subscription1?.unsubscribe()
+  ngOnDestroy() {
+    this.sub1?.unsubscribe();
+    this.sub2?.unsubscribe();
   }
 }
