@@ -15,10 +15,11 @@ import { ToastService } from '../../../../projects/shared-utils/src/lib/toast.se
 import { Router } from '@angular/router';
 import { EditProfile } from '../../../../projects/auth/src/interfaces/editProfile.interface';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
- 
+import { MytranslateService } from '../../../../projects/shared-utils/src/lib/mytranslate.service';
+import { TranslatePipe } from '@ngx-translate/core';
 @Component({
   selector: 'app-settings-page',
-  imports: [SettingsMetricComponent, SettingsItemComponent, DialogModule, SelectStepComponent, MetricStepComponent, CustomButton, CustomInput, SelectButton, FormsModule,ReactiveFormsModule],
+  imports: [SettingsMetricComponent, SettingsItemComponent, DialogModule, SelectStepComponent, MetricStepComponent, CustomButton, CustomInput, SelectButton, FormsModule,ReactiveFormsModule,TranslatePipe],
   templateUrl: './settings-page.component.html',
   styleUrl: './settings-page.component.scss',
 })
@@ -34,8 +35,8 @@ export class SettingsPageComponent implements OnInit {
 
  visible: boolean = false;
   
-  value: string = 'english';
-
+langValue = 'en';
+moodValue = 'light';
   changePasswordForm!: FormGroup;
    isloading=signal<boolean>(false)
    disabled=signal<boolean>(false)
@@ -47,6 +48,7 @@ export class SettingsPageComponent implements OnInit {
   private readonly _destroyRef=inject(DestroyRef)
   private readonly _router=inject(Router)
   private readonly _toastr=inject(ToastService)
+  private readonly _translate=inject(MytranslateService)
 
 
 
@@ -109,6 +111,13 @@ changeMetricValue(value:EditProfile) {
     })
 
      
+}
+
+changeLanguage(lang:string){
+  this._translate.changeLanguage(lang)
+}
+changeMood(mood:string){
+  this._translate.changeLanguage(mood)
 }
 
 logout(){

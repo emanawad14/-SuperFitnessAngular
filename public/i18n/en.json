@@ -1,0 +1,52 @@
+ {
+ 
+  "settings":{
+    
+    "changepassword":{
+       "changepassword":"Change Password",
+      "currentpassword":"Current Password",
+      "currentpasswordplaceholder":"Enter Current Password",
+      "newpassword":"New Password",
+      "newpasswordplaceholder":"Enter New Password",
+      "confirmnewpassword":"Confirm New Password",
+      "submit":"Change Password"
+    },
+    "selectlanguage":"Select Language",
+    "selectmood":"Select Mood",
+    "security":"Security",
+    "privacy":"Privacy Policy",
+    "help":"Help Center",
+    "logout":"Logout",
+    "goal":"Your Goal",
+    "weight":"Your Weight",
+    "level":"Your Level",
+    "tap":"Tap To Change"
+
+
+  },
+  "navbar":{
+    "home":"Home",
+    "about":"About",
+    "classes":"Classes",
+    "healthy":"Healthy",
+     "login":"Sign In",
+     "signup":"Sign Up"
+  },
+  "login":{
+    "login to your account":"Login to your account",
+    "email":"Email",
+    "password":"Password",
+    "dont have an account?":"Don't have an account?",
+    "register here":"Register here"
+  },
+  "register":{
+    "register to your account":"Register to your account",
+    "name":"Name",
+    "email":"Email",
+    "password":"Password",
+    "confirm password":"Confirm Password",
+    "already have an account?":"Already have an account?",
+    "login here":"Login here"
+  }
+
+ }

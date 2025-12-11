@@ -19,15 +19,15 @@
 
     <div class="hidden md:flex items-center justify-between w-full">
       <ul class="flex mx-auto space-x-20 rtl:space-x-reverse font-semibold">
-        <li><a href="#" class="font-bold text-[#e63e00] hover:text-[#ff5500]">Home</a></li>
-        <li><a href="#" class="font-bold hover:text-[#ff5500]">About</a></li>
-        <li><a href="#" class="font-bold hover:text-[#ff5500]">Classes</a></li>
-        <li><a href="#" class="font-bold hover:text-[#ff5500]">Healthy</a></li>
+        <li><a href="#" class="font-bold text-[#e63e00] hover:text-[#ff5500]">{{ 'navbar.home' | translate }}</a></li>
+        <li><a href="#" class="font-bold hover:text-[#ff5500]">{{ 'navbar.about' | translate }}</a></li>
+        <li><a href="#" class="font-bold hover:text-[#ff5500]">{{ 'navbar.classes' | translate }}</a></li>
+        <li><a href="#" class="font-bold hover:text-[#ff5500]">{{ 'navbar.healthy' | translate }}</a></li>
       </ul>
 
       <div class="flex items-center gap-10">
-        <app-button type="login" text="LOG IN"></app-button>
-        <app-button type="signup" text="SIGN UP"></app-button>
+        <app-button type="login" text="{{ 'navbar.login' | translate }}"></app-button>
+        <app-button type="signup" text="{{ 'navbar.signup' | translate }}"></app-button>
       </div>
     </div>
   </div>
@@ -35,14 +35,14 @@
   
   <div [class.hidden]="!mobileMenuOpen"
        class="md:hidden p-6 space-y-4 border-t bg-white/95 shadow-lg rounded-b-xl">
-    <a class="block text-lg font-semibold hover:text-[#e63e00]">Home</a>
-    <a class="block text-lg font-semibold hover:text-[#e63e00]">About</a>
-    <a class="block text-lg font-semibold hover:text-[#e63e00]">Classes</a>
-    <a class="block text-lg font-semibold hover:text-[#e63e00]">Healthy</a>
+    <a class="block text-lg font-semibold hover:text-[#e63e00]">{{ 'navbar.home' | translate }}</a>
+    <a class="block text-lg font-semibold hover:text-[#e63e00]">{{ 'navbar.about' | translate }}</a>
+    <a class="block text-lg font-semibold hover:text-[#e63e00]">{{ 'navbar.classes' | translate }}</a>
+    <a class="block text-lg font-semibold hover:text-[#e63e00]">{{ 'navbar.healthy' | translate }}</a>
 
     <div class="pt-4 flex flex-col gap-3">
-      <app-button type="login" text="LOG IN"></app-button>
-      <app-button type="signup" text="SIGN UP"></app-button>
+      <app-button type="login" text="{{ 'navbar.login' | translate }}"></app-button>
+      <app-button type="signup" text="{{ 'navbar.signup' | translate }}"></app-button>
     </div>
   </div>
 </nav>
