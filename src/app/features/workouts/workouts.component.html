@@ -1,4 +1,4 @@
-<section class="image text-center relative">
+<section class="image text-center py-20 relative">
 
   <div class="flex flex-col items-center gap-2 py-6 text-center">
     <img src="/images/Why us.png" alt="" class="w-auto" />
@@ -39,6 +39,7 @@
   <app-cards
     [image]="card.image"
     [title]="card.name"
+   [routerLink]="['/classId', card._id]"
     actionText="Explore"
     icon="fa-solid fa-up-right-from-square"
   />

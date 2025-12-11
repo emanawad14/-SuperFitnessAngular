@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { ButtonComponent } from "../button/button.component";
-import { TranslatePipe } from '@ngx-translate/core';
+import { RouterLink, RouterLinkActive } from "@angular/router";
 
 @Component({
   selector: 'app-navbar',
-  imports: [ButtonComponent,TranslatePipe],
+  imports: [ButtonComponent, RouterLink, RouterLinkActive],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
 })
