@@ -117,8 +117,14 @@ changeLanguage(lang:string){
   this._translate.changeLanguage(lang)
 }
 changeMood(mood:string){
-  this._translate.changeLanguage(mood)
-}
+  if(mood==='dark'){
+    document.documentElement.classList.add('dark');
+    localStorage.setItem('darkMode','true')
+  }else if(mood==='light'){
+    document.documentElement.classList.remove('dark');
+    localStorage.setItem('darkMode','false')
+  }
+ }
 
 logout(){
   console.log('logout');  
