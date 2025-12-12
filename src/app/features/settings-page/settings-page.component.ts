@@ -17,6 +17,7 @@ import { EditProfile } from '../../../../projects/auth/src/interfaces/editProfil
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MytranslateService } from '../../../../projects/shared-utils/src/lib/mytranslate.service';
 import { TranslatePipe } from '@ngx-translate/core';
+import { SafeStorage } from '../../../../projects/shared-utils/src/lib/safe-storage';
 @Component({
   selector: 'app-settings-page',
   imports: [SettingsMetricComponent, SettingsItemComponent, DialogModule, SelectStepComponent, MetricStepComponent, CustomButton, CustomInput, SelectButton, FormsModule,ReactiveFormsModule,TranslatePipe],
@@ -25,9 +26,18 @@ import { TranslatePipe } from '@ngx-translate/core';
 })
 export class SettingsPageComponent implements OnInit {
 
+   private readonly _fb=inject(FormBuilder)
+  private readonly _authService=inject(AuthService)
+  private readonly _destroyRef=inject(DestroyRef)
+  private readonly _router=inject(Router)
+  private readonly _toastr=inject(ToastService)
+  private readonly _translate=inject(MytranslateService)
+  private readonly _safeStorage=inject(SafeStorage)
+
+  
  type = signal<"weight" | "level" | "goal" |"pass" |"lang"|"mood">("weight");
  
-  user=signal<User>(JSON.parse(localStorage.getItem('user')!))
+  user=signal<User>(JSON.parse(this._safeStorage.get('user')!))
   weight:WritableSignal<number>=signal(this.user().weight)
   level:WritableSignal<string>=signal(this.user().activityLevel)
   goal:WritableSignal<string>=signal(this.user().goal)
@@ -43,12 +53,7 @@ moodValue = 'light';
 
    
 
-  private readonly _fb=inject(FormBuilder)
-  private readonly _authService=inject(AuthService)
-  private readonly _destroyRef=inject(DestroyRef)
-  private readonly _router=inject(Router)
-  private readonly _toastr=inject(ToastService)
-  private readonly _translate=inject(MytranslateService)
+ 
 
 
 
