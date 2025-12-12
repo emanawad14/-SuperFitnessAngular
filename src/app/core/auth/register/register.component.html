@@ -3,10 +3,8 @@
 @switch (currentStep) {
   @case (0) {
   <app-form-layout [formGroup]="registerForm" class="w-1/2" [title]="'Hey There'" [subtitle]="'Create An Account'" [formtitle]="'Register'" [helpertext]="'Already have an account ?'" [helperlink]="'login'" [forgetLink]="'Forgot Password?'">
-
-  
-
-       <custom-input formControlName="firstName" [label]="'First Name'" [type]="'text'" [placeholder]="'Enter your First Name'" [icon]="'pi pi-user'" inputs ></custom-input>
+<p class=""></p>
+      <custom-input formControlName="firstName" [label]="'First Name'" [type]="'text'" [placeholder]="'Enter your First Name'" [icon]="'pi pi-user'" inputs ></custom-input>
        <custom-input formControlName="lastName" [label]="'Last Name'" [type]="'text'" [placeholder]="'Enter your Last Name'" [icon]="'pi pi-user'" inputs ></custom-input>
        <custom-input formControlName="email" [label]="'Email'" [type]="'email'" [placeholder]="'Enter your Email'" [icon]="'pi pi-envelope'" inputs ></custom-input>
        <custom-input formControlName="password" [label]="'Password'" [type]="'password'" [placeholder]="'Enter your Password'" [icon]="'pi pi-lock'" [passIcon]="'pi pi-eye'" inputs ></custom-input>

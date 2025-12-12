@@ -6,6 +6,7 @@ export enum AuthEndpoints {
   RESET_PASSWORD = 'auth/resetPassword',
   CHANGE_PASSWORD = 'auth/change-password',
   upload_profile_photo = 'auth/upload-photo',
-  get_logged_user = 'auth/profile-data'
+  get_logged_user = 'auth/profile-data',
+  edit_profile = 'auth/editProfile'
  
 }

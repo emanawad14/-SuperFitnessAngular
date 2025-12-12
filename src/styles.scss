@@ -20,7 +20,7 @@
 
 .dark {
   /* Dark Mode */
- --color-site: #24242499;
+ --color-site:#242424;
     --color-primary: #ffffff;
     --color-secondary: #ff4100;
     --color-x:#ff6a00;
@@ -43,6 +43,11 @@
            flex items-center justify-center text-primary
            hover:bg-secondary hover:border-secondary transition-all;
   }
+.glass-card {
+  @apply flex flex-col items-center justify-center bg-site border border-primary
+         rounded-2xl py-8 px-4 backdrop-blur-xl shadow-lg transition  hover:border-secondary cursor-pointer;
+}
+
 }
 
 /* Utilities */

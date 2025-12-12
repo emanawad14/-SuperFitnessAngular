@@ -7,6 +7,7 @@ import { ForgetPasswordComponent } from './core/auth/forget-password/forget-pass
 import { NewPasswordComponent } from './core/auth/new-password/new-password.component';
 import { MainLayoutComponent } from './core/auth/layouts/main-layout/main-layout.component';
 import { HomeComponent } from './features/home/home.component';
+import { SettingsPageComponent } from './features/settings-page/settings-page.component';
 
 export const routes: Routes = [
   
@@ -52,6 +53,9 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./features/classes/classes.component').then((c) => c.ClassesComponent),
         title: 'classId'
+      },
+      {
+        path: 'settings', component:SettingsPageComponent , title: 'Settings Page'
       }
     ]
   },

@@ -8,9 +8,10 @@ import { Component, input, output } from '@angular/core';
 })
 export class SettingsMetricComponent {
 title=input("");
-  value=input(0);
-  onValueChange = output<Event>();
-  valueChange(e:Event) {
-    this.onValueChange.emit(e);
+textLink=input("");
+  value=input();
+  onValueChange = output();
+  valueChange() {
+    this.onValueChange.emit();
   }
 }

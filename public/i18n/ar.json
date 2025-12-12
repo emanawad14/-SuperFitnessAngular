@@ -1,0 +1,50 @@
+ {
+  "settings": {
+    "changepassword": {
+      "changepassword": "تغيير كلمة المرور",
+      "currentpassword": "كلمة المرور الحالية",
+      "currentpasswordplaceholder": "أدخل كلمة المرور الحالية",
+      "newpassword": "كلمة المرور الجديدة",
+      "newpasswordplaceholder": "أدخل كلمة المرور الجديدة",
+      "confirmnewpassword": "تأكيد كلمة المرور الجديدة",
+      "submit": "تغيير كلمة المرور"
+    },
+    "selectlanguage": "اختر اللغة",
+    "selectmood": "اختر الوضع",
+    "security": "الأمان",
+    "privacy": "سياسة الخصوصية",
+    "help": "مركز المساعدة",
+    "logout": "تسجيل الخروج",
+    "goal": "هدفك",
+    "weight": "وزنك",
+    "level": "مستواك",
+    "tap": "اضغط للتغيير"
+  },
+
+  "navbar": {
+    "home": "الرئيسية",
+    "about": "من نحن",
+    "classes": "الحصص",
+    "healthy": "الصحة",
+    "login": "تسجيل الدخول",
+    "signup": "إنشاء حساب"
+  },
+
+  "login": {
+    "login to your account": "سجّل الدخول إلى حسابك",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "dont have an account?": "ليس لديك حساب؟",
+    "register here": "سجّل هنا"
+  },
+
+  "register": {
+    "register to your account": "أنشئ حسابًا جديدًا",
+    "name": "الاسم",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "confirm password": "تأكيد كلمة المرور",
+    "already have an account?": "لديك حساب بالفعل؟",
+    "login here": "سجّل من هنا"
+  }
+}
