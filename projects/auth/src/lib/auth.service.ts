@@ -42,7 +42,9 @@ export class AuthService implements AuthAPI {
    changePassword(data:changePassword): Observable<changePasswordResponse> {
     return this._http.patch<changePasswordResponse>(environment.baseUrl+AuthEndpoints.CHANGE_PASSWORD,data)
    }
-   
+   logout():Observable<string>{
+    return this._http.get<string>(environment.baseUrl+AuthEndpoints.LOGOUT)
+   }
 
  
    

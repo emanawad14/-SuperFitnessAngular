@@ -18,6 +18,8 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MytranslateService } from '../../../../projects/shared-utils/src/lib/mytranslate.service';
 import { TranslatePipe } from '@ngx-translate/core';
 import { SafeStorage } from '../../../../projects/shared-utils/src/lib/safe-storage';
+import { finalize } from 'rxjs';
+ 
 @Component({
   selector: 'app-settings-page',
   imports: [SettingsMetricComponent, SettingsItemComponent, DialogModule, SelectStepComponent, MetricStepComponent, CustomButton, CustomInput, SelectButton, FormsModule,ReactiveFormsModule,TranslatePipe],
@@ -131,12 +133,23 @@ changeMood(mood:string){
   }
  }
 
-logout(){
-  console.log('logout');  
-  localStorage.removeItem('user')
-  localStorage.removeItem('token')
-  this._router.navigate(['/login'])
+ 
+logout() {
+  this._authService.logout()
+    .pipe(
+      takeUntilDestroyed(this._destroyRef),
+      finalize(() => {
+        localStorage.removeItem('user');
+        localStorage.removeItem('token');
+        this._router.navigate(['/login']);
+      })
+    )
+    .subscribe({
+      next: () => {},
+      error: () => {},
+    });
 }
+
 
 
  
