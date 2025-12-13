@@ -94,16 +94,16 @@
      @case ("lang") {
              <div class="card flex justify-center items-center h-20">
 
-                  <p-selectbutton [options]="[{ label: 'عربي', value: 'عربي' },{ label: 'ُEnglish', value: 'english' }]" [(ngModel)]="value" optionLabel="label" optionValue="value" aria-labelledby="basic" />
+                  <p-selectbutton [options]="[{ label: 'عربي', value: 'عربي' },{ label: 'ُEnglish', value: 'english' }]" [(ngModel)]="langValue" optionLabel="label" optionValue="value" aria-labelledby="basic" />
 
              </div>
       }
-     @case ("mood") {
+     <!-- @case ("mood") {
               <div class="card flex justify-center items-center h-20">
-                <p-selectbutton [options]="[{ label: 'Light', value: 'light' },{ label: 'Dark', value: 'dark' }]" [(ngModel)]="value" optionLabel="label" optionValue="value" aria-labelledby="basic" styleClass=" " />
+                <p-selectbutton [options]="[{ label: 'Light', value: 'light' },{ label: 'Dark', value: 'dark' }]" [(ngModel)]="moodValue" optionLabel="label" optionValue="value" aria-labelledby="basic" styleClass=" " />
         
               </div> 
-     }
+     } -->
 }
    
  </p-dialog>

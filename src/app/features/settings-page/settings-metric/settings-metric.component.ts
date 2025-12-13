@@ -8,6 +8,7 @@ import { Component, input, output } from '@angular/core';
 })
 export class SettingsMetricComponent {
 title=input("");
+textLink=input("");
   value=input();
   onValueChange = output();
   valueChange() {

@@ -53,6 +53,9 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./features/classes/classes.component').then((c) => c.ClassesComponent),
         title: 'classId'
+      },
+      {
+        path: 'settings', component:SettingsPageComponent , title: 'Settings Page'
       }
     ]
   },
