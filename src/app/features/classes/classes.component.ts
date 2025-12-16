@@ -11,13 +11,13 @@ import { HealthyService } from '../../core/services/healthy/healthy.service';
 
 import { TabsComponent } from '../../shared/components/tabs/tabs.component';
 import { CardsComponent } from '../../shared/components/cards/cards.component';
+import { SliderComponent } from '../../shared/components/slider/slider.component';
 
 import { Exercise } from '../../shared/interfaces/exercies/iexercies.interface';
 import { DifficultyLevel } from '../../shared/interfaces/levels/ilevels.interface';
 import { Imuscles } from '../../shared/interfaces/muscles/imuscles.interface';
 import { ImusclesId } from '../../shared/interfaces/musclesid/imusclesid.interface';
 import { IMealItem } from '../../shared/interfaces/healthy/ihealthy.interface';
-import { SliderComponent } from "../../shared/components/slider/slider.component";
 
 @Component({
   selector: 'app-classes',
@@ -28,36 +28,33 @@ import { SliderComponent } from "../../shared/components/slider/slider.component
 })
 export class ClassesComponent implements OnInit, OnDestroy {
 
- 
+  /* ================= Inject ================= */
   private route = inject(ActivatedRoute);
   private classesService = inject(ClassesService);
   private musclesIdService = inject(MusclesIdService);
   private musclesGroupService = inject(MusclesgroupService);
   private healthyService = inject(HealthyService);
   private sanitizer = inject(DomSanitizer);
- 
 
-
+  /* ================= State ================= */
   primeId!: string;
+
   levels: DifficultyLevel[] = [];
   exercises: Exercise[] = [];
   selectedExercise: Exercise | null = null;
   videoUrl: SafeResourceUrl | null = null;
 
- 
   muscles: { id: string; name: string }[] = [];
   muscleCards: ImusclesId[] = [];
   selectedMuscle = '';
 
- 
   categories: { id: string; name: string }[] = [];
   subCategory: IMealItem[] = [];
   selectedCategory = '';
 
- 
   private subs = new Subscription();
 
-  
+  /* ================= Lifecycle ================= */
   ngOnInit(): void {
     this.getAllMuscles();
     this.getCategories();
@@ -77,7 +74,7 @@ export class ClassesComponent implements OnInit, OnDestroy {
     this.subs.unsubscribe();
   }
 
-  
+  /* ================= Levels ================= */
   loadLevels(): void {
     this.subs.add(
       this.classesService.getDifficultyByPrime(this.primeId).subscribe(res => {
@@ -89,21 +86,25 @@ export class ClassesComponent implements OnInit, OnDestroy {
     );
   }
 
+  onLevelChange(level: DifficultyLevel): void {
+    this.loadExercises(level.id);
+  }
+
   loadExercises(levelId: string): void {
     this.subs.add(
       this.classesService.getExerciesByPrime(this.primeId, levelId).subscribe(res => {
         this.exercises = res.exercises;
         if (this.exercises.length) {
           this.selectExercise(this.exercises[0]);
+        } else {
+          this.selectedExercise = null;
+          this.videoUrl = null;
         }
       })
     );
   }
 
-  onLevelChange(level: DifficultyLevel): void {
-    this.loadExercises(level.id);
-  }
-
+  /* ================= Exercise ================= */
   selectExercise(ex: Exercise): void {
     this.selectedExercise = ex;
     this.videoUrl = this.getYoutubeEmbed(ex.short_youtube_demonstration_link);
@@ -111,13 +112,15 @@ export class ClassesComponent implements OnInit, OnDestroy {
 
   getYoutubeEmbed(link: string | null): SafeResourceUrl | null {
     if (!link) return null;
-    const videoId = link.split('v=')[1]?.split('&')[0] || link.split('/').pop();
+    const videoId =
+      link.split('v=')[1]?.split('&')[0] || link.split('/').pop();
+
     return this.sanitizer.bypassSecurityTrustResourceUrl(
       `https://www.youtube.com/embed/${videoId}?autoplay=1`
     );
   }
 
-  
+  /* ================= Muscles ================= */
   getAllMuscles(): void {
     this.subs.add(
       this.musclesGroupService.getAllMusclesGroup().subscribe(res => {
@@ -135,6 +138,7 @@ export class ClassesComponent implements OnInit, OnDestroy {
 
   setActive(name: string, id: string): void {
     this.selectedMuscle = name;
+
     this.subs.add(
       this.musclesIdService.getAllMusclesGroupID(id).subscribe(res => {
         this.muscleCards = res.muscles;
@@ -142,7 +146,7 @@ export class ClassesComponent implements OnInit, OnDestroy {
     );
   }
 
- 
+  /* ================= Healthy ================= */
   getCategories(): void {
     this.subs.add(
       this.healthyService.getMealsCategories().subscribe(res => {

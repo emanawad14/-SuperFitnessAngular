@@ -1,4 +1,9 @@
  <div class="glass-card max-w-[216px]" (click)="valueChange($event)">
       <i class="{{icon()}} text-secondary text-2xl mb-3"></i>
-      <p class="text-center text-lg">{{title()}}</p>
+      <div class="card flex justify-center">
+        <p class="text-center text-lg">{{title()}}</p>
+        @if (type() === "mood") {
+         <p-toggleswitch [(ngModel)]="checked" (ngModelChange)="changeMood($event)" [style]="{'margin-left': '10px'}" />
+        }
+      </div>
  </div>

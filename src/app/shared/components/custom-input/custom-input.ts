@@ -20,6 +20,7 @@ export class CustomInput {
   @Input() passIcon: string = '';
   @Input() type: string = '';
   @Input() label: string = '';
+  @Input() id: string = '';
 
   value: string = '';
 

@@ -1,32 +1,109 @@
 <div class="min-h-screen w-full px-6 pt-30 text-primary bg-site backdrop-blur-[60px]">
 
    
-  <div class="grid grid-cols-2 md:grid-cols-3 md:max-w-4xl mx-auto gap-6 mb-10">
+  <div class="grid grid-cols-1 md:grid-cols-3 md:max-w-4xl mx-auto gap-6 mb-10">
 
     <!-- Goal -->
-    <app-settings-metric [title]="'Your Goal'" [value]="0" (onValueChange)="metric($event)"></app-settings-metric>
+    <app-settings-metric title="{{'settings.goal'|translate}}" [value]="goal()" (onValueChange)="showDialog();type.set('goal')"></app-settings-metric>
      <!-- Level -->
-    <app-settings-metric [title]="'Your Level'" [value]="0" (onValueChange)="metric($event)"></app-settings-metric>
+    <app-settings-metric [title]="'settings.level'|translate" [value]="level()" (onValueChange)="showDialog();type.set('level')"></app-settings-metric>
 
     <!-- Weight -->
-    <app-settings-metric [title]="'Your Weight'" [value]="0" (onValueChange)="metric($event)"></app-settings-metric>
+    <app-settings-metric [title]="'settings.weight'|translate" [value]="weight()" (onValueChange)="showDialog();type.set('weight')"></app-settings-metric>
   </div>
   <!-- Settings Grid -->
   <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 md:w-3xl mx-auto gap-6">
 
-    <app-settings-item [title]="'Change Password'" [icon]="'pi pi-refresh'" (onValueChange)="item($event)"></app-settings-item>
-    <app-settings-item [title]="'Select Language'" [icon]="'pi pi-globe'" (onValueChange)="item($event)"></app-settings-item>
-    <app-settings-item [title]="'Mood'" [icon]="'pi pi-moon'" (onValueChange)="item($event)"></app-settings-item>
-    <app-settings-item [title]="'Security'" [icon]="'pi pi-shield'" (onValueChange)="item($event)"></app-settings-item>
-    <app-settings-item [title]="'Privacy Policy'" [icon]="'pi pi-lock'" (onValueChange)="item($event)"></app-settings-item>
-    <app-settings-item [title]="'Help'" [icon]="'pi pi-question-circle'" (onValueChange)="item($event)"></app-settings-item>
+    <app-settings-item [title]="'settings.changepassword.changepassword'|translate" [icon]="'pi pi-refresh'" (onValueChange)="showDialog();type.set('pass') "></app-settings-item>
+    <app-settings-item [title]="'settings.selectlanguage'|translate" [icon]="'pi pi-globe'" (onValueChange)="showDialog();type.set('lang')"></app-settings-item>
+    <app-settings-item [title]="'settings.selectmood'|translate" [icon]="'pi pi-moon'" type="mood"></app-settings-item>
+    <app-settings-item [title]="'settings.security'|translate" [icon]="'pi pi-shield'"  ></app-settings-item>
+    <app-settings-item [title]="'settings.privacy'|translate" [icon]="'pi pi-lock'"  ></app-settings-item>
+    <app-settings-item [title]="'settings.help'|translate" [icon]="'pi pi-question-circle'" ></app-settings-item>
     
      
   </div>
 
   <!-- Logout -->
-  <div class="glass-card mt-8 cursor-pointer max-w-[200px] mx-auto ">
+  <button class="glass-card mt-8 cursor-pointer w-48  mx-auto " (click)="logout()">
     <i class="pi pi-sign-out text-secondary text-2xl mb-3"></i>
-    <p class="text-center text-lg text-secondary">Logout</p>
-  </div>
+    <p class="text-center text-lg text-secondary">{{'settings.logout'|translate}}</p>
+  </button>
 </div>
+
+
+<p-dialog   [modal]="true" [(visible)]="visible" [style]="{ width: '25rem',background: '#000',borderRadius: '2rem'}">
+         
+  @switch (type()) {
+     @case ("weight") {
+        <div class=" flex flex-col items-center justify-center text-primary overflow-hidden">
+           <h2 class="text-4xl font-bold mb-4">what is your weight</h2>
+           <p class="mb-6 text-lg">tell us your weight </p>
+           <app-metric-step
+              [(value)]="weight"
+        
+              [min]="40"
+              [max]="200"
+              unit="kg">
+           </app-metric-step>
+      
+
+            <custom-button (onClick)="changeMetricValue({'weight': weight()!})" [isloading]="isloading()" [disabled]="disabled()" [label]="'submit'"   class="w-full max-w-md my-4"></custom-button>
+        </div>     
+    }
+      @case ("goal") {
+         <div class=" flex flex-col items-center justify-center text-primary overflow-hidden">
+           <h2 class="text-4xl font-bold mb-4">what is your goal</h2>
+           <p class="mb-6 text-lg">tell us your goal </p>
+            <app-select-step 
+             class="w-full" 
+             [options]="['lose weight', 'gain weight', 'maintain weight']"
+             (selectedChange)="goal.set($event)"
+             >
+             
+            </app-select-step>
+       
+            <custom-button (onClick)="changeMetricValue({'goal': goal()})" [isloading]="isloading()" [disabled]="disabled()"  [label]="'submit'"   class="w-full max-w-md my-4"></custom-button>
+        </div> 
+    }
+      @case ("level") {
+        <div class=" flex flex-col items-center justify-center text-primary overflow-hidden">
+           <h2 class="text-4xl font-bold mb-4">what is your level</h2>
+           <p class="mb-6 text-lg">tell us your level </p>
+            <app-select-step 
+             class="w-full" 
+             [options]="['level1', 'level2', 'level3', 'level4', 'level5']"
+             (selectedChange)="level.set($event)"
+             >
+            </app-select-step>
+       
+            <custom-button  (onClick)="changeMetricValue({'activityLevel': level()})" [isloading]="isloading()" [disabled]="disabled()" [label]="'submit'"   class="w-full max-w-md my-4"></custom-button>
+        </div> 
+     }
+     @case ("pass") {
+        <div class=" flex flex-col items-center justify-center text-primary overflow-hidden">
+           <h2 class="text-4xl font-bold mb-4">Change Password</h2>
+            <form [formGroup]="changePasswordForm">
+              <custom-input formControlName="password" [label]="'Password'" [type]="'password'" [placeholder]="'Current Password'" [icon]="'pi pi-lock'" [passIcon]="'pi pi-eye'" inputs ></custom-input>
+              <custom-input formControlName="newPassword" [label]="'newPassword'" [type]="'password'" [placeholder]="' New Password'" [icon]="'pi pi-lock'" [passIcon]="'pi pi-eye'" inputs ></custom-input>
+
+              <custom-button (onClick)="changePassword()" [isloading]="isloading()" [disabled]="disabled()"  [label]="'submit'"   class="w-full max-w-md my-4"></custom-button>
+            </form>
+        </div> 
+     }
+     @case ("lang") {
+             <div class="card flex justify-center items-center h-20">
+
+                  <p-selectbutton [options]="[{ label: 'عربي', value: 'ar' },{ label: 'ُEnglish', value: 'en' }]" [(ngModel)]="langValue"    (ngModelChange)="changeLanguage($event)" optionLabel="label" optionValue="value" aria-labelledby="basic" />
+
+             </div>
+      }
+     <!-- @case ("mood") {
+              <div class="card flex justify-center items-center h-20">
+                <p-selectbutton [options]="[{ label: 'Light', value: 'light' },{ label: 'Dark', value: 'dark' }]" [(ngModel)]="moodValue" optionLabel="label" optionValue="value" aria-labelledby="basic" styleClass=" " />
+        
+              </div> 
+     } -->
+}
+   
+ </p-dialog>

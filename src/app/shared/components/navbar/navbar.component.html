@@ -19,10 +19,10 @@
 
    <div class="hidden md:flex items-center justify-between w-full">
   <ul class="flex mx-auto space-x-20 rtl:space-x-reverse font-semibold">
-    <li><a routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" class="font-bold text-white">Home</a></li>
-    <li><a class="font-bold text-white" routerLink="about" routerLinkActive="active-link" >About</a></li>
-    <li><a class="font-bold text-white" routerLink="classes" routerLinkActive="active-link" >Classes</a></li>
-    <li><a class="font-bold text-white" routerLink="healthy" routerLinkActive="active-link" >Healthy</a></li>
+    <li><a routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" class="font-bold text-white">{{ 'navbar.home' | translate }}</a></li>
+    <li><a class="font-bold text-white" routerLink="about" routerLinkActive="active-link" >{{ 'navbar.about' | translate }}</a></li>
+    <li><a class="font-bold text-white" routerLink="classes" routerLinkActive="active-link" >{{ 'navbar.classes' | translate }}</a></li>
+    <li><a class="font-bold text-white" routerLink="healthy" routerLinkActive="active-link" >{{ 'navbar.healthy' | translate }}</a></li>
   </ul>
 
   <div class="flex items-center gap-10">
@@ -36,14 +36,14 @@
   
   <div [class.hidden]="!mobileMenuOpen"
        class="md:hidden p-6 space-y-4 border-t bg-white/95 shadow-lg rounded-b-xl">
-    <a class="block text-lg font-semibold hover:text-[#e63e00]">Home</a>
-    <a class="block text-lg font-semibold hover:text-[#e63e00]">About</a>
-    <a class="block text-lg font-semibold hover:text-[#e63e00]">Classes</a>
-    <a class="block text-lg font-semibold hover:text-[#e63e00]">Healthy</a>
+    <a class="block text-lg font-semibold hover:text-[#e63e00]">{{ 'navbar.home' | translate }}</a>
+    <a class="block text-lg font-semibold hover:text-[#e63e00]">{{ 'navbar.about' | translate }}</a>
+    <a class="block text-lg font-semibold hover:text-[#e63e00]">{{ 'navbar.classes' | translate }}</a>
+    <a class="block text-lg font-semibold hover:text-[#e63e00]">{{ 'navbar.healthy' | translate }}</a>
 
     <div class="pt-4 flex flex-col gap-3">
-      <app-button type="login" text="LOG IN"></app-button>
-      <app-button type="signup" text="SIGN UP"></app-button>
+      <app-button type="login" text="{{ 'navbar.login' | translate }}"></app-button>
+      <app-button type="signup" text="{{ 'navbar.signup' | translate }}"></app-button>
     </div>
   </div>
 </nav>

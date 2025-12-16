@@ -2,6 +2,7 @@ import { Observable } from 'rxjs';
 import { LoginRequest, LoginResponse } from '../interfaces/login.interface';
 import { Signup, SignupResponse } from '../interfaces/signup.interface';
 import { forgotPassword, forgotPasswordResponse, reset, resetResponse, verifyOtp, verifyOtpResponse } from '../interfaces/password.interface';
+import { EditProfile, EditProfileResponse } from '../interfaces/editProfile.interface';
   
 export abstract class AuthAPI {
   /**
@@ -14,6 +15,9 @@ export abstract class AuthAPI {
   abstract forgotPassword(data: forgotPassword): Observable<forgotPasswordResponse>;
   abstract verifyOtp(data: verifyOtp): Observable<verifyOtpResponse>;
   abstract resetPassword(data:reset): Observable<resetResponse>;
- }
+  abstract editProfile(data:EditProfile): Observable<EditProfileResponse>;
+  abstract logout(): Observable<string>;
+
+  }
 
  

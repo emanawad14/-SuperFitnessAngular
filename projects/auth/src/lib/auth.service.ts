@@ -5,8 +5,9 @@ import { LoginRequest, LoginResponse } from '../interfaces/login.interface';
  import { Signup, SignupResponse } from '../interfaces/signup.interface';
 import { HttpClient } from '@angular/common/http';
  import { AuthEndpoints } from '../enums/AuthEndpoints';
-import { forgotPassword, forgotPasswordResponse, reset, resetResponse, verifyOtp, verifyOtpResponse } from '../interfaces/password.interface';
+import { changePassword, changePasswordResponse, forgotPassword, forgotPasswordResponse, reset, resetResponse, verifyOtp, verifyOtpResponse } from '../interfaces/password.interface';
 import { environment } from '../../../../src/environments/environment';
+import { EditProfile, EditProfileResponse } from '../interfaces/editProfile.interface';
  
 @Injectable({
   providedIn: 'root'
@@ -35,7 +36,16 @@ export class AuthService implements AuthAPI {
       return this._http.put<resetResponse>(environment.baseUrl+AuthEndpoints.RESET_PASSWORD,data)
 
    }
-   
+   editProfile(data:EditProfile): Observable<EditProfileResponse> {
+    return this._http.put<EditProfileResponse>(environment.baseUrl+AuthEndpoints.edit_profile,data)
+   }
+   changePassword(data:changePassword): Observable<changePasswordResponse> {
+    return this._http.patch<changePasswordResponse>(environment.baseUrl+AuthEndpoints.CHANGE_PASSWORD,data)
+   }
+   logout():Observable<string>{
+    return this._http.get<string>(environment.baseUrl+AuthEndpoints.LOGOUT)
+   }
+
  
    
 
