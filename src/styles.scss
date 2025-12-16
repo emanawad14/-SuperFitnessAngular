@@ -20,11 +20,11 @@
 
 .dark {
   /* Dark Mode */
- --color-site:#242424;
+ --color-site:#000;
     --color-primary: #ffffff;
     --color-secondary: #ff4100;
-    --color-x:#ff6a00;
-    --color-disabled: #D3D3D3;
+     --color-hover:#ff0000
+     --color-disabled: #D3D3D3;
 
  
 }
@@ -47,6 +47,23 @@
   @apply flex flex-col items-center justify-center bg-site border border-primary
          rounded-2xl py-8 px-4 backdrop-blur-xl shadow-lg transition  hover:border-secondary cursor-pointer;
 }
+ .divider-text {
+    @apply relative my-3 text-center text-sm text-primary;
+
+    &::before,
+    &::after {
+      content: '';
+      @apply absolute top-1/2 h-px bg-primary w-[42%];
+    }
+
+    &::before {
+      @apply left-0;
+    }
+
+    &::after {
+      @apply right-0;
+    }
+  }
 
 }
 

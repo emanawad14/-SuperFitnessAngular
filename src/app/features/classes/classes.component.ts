@@ -89,8 +89,7 @@ primeId:string=''
 getDifficulty(primeId: string) {
   this.getExerices.getDifficultyByPrime(primeId).subscribe({
     next: (res) => {
-      console.log(res);
-
+ 
       this.difficultyLevels = res.difficulty_levels;
 
       if (this.difficultyLevels.length > 0) {
@@ -108,8 +107,7 @@ getAllExercies(primeId: string, difficultyId: string) {
   this.getExerices.getExerciesByPrime(primeId, difficultyId).subscribe({
     next: (res) => {
 
-     console.log(res);
-     
+      
        this.exercies=res.exercises
     },
     // error: (err) => console.log(err)

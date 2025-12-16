@@ -4,22 +4,22 @@
   <div class="grid grid-cols-1 md:grid-cols-3 md:max-w-4xl mx-auto gap-6 mb-10">
 
     <!-- Goal -->
-    <app-settings-metric [title]="'Your Goal'" [value]="goal()" (onValueChange)="showDialog();type.set('goal')"></app-settings-metric>
+    <app-settings-metric title="{{'settings.goal'|translate}}" [value]="goal()" (onValueChange)="showDialog();type.set('goal')"></app-settings-metric>
      <!-- Level -->
-    <app-settings-metric [title]="'Your Level'" [value]="level()" (onValueChange)="showDialog();type.set('level')"></app-settings-metric>
+    <app-settings-metric [title]="'settings.level'|translate" [value]="level()" (onValueChange)="showDialog();type.set('level')"></app-settings-metric>
 
     <!-- Weight -->
-    <app-settings-metric [title]="'Your Weight'" [value]="weight()" (onValueChange)="showDialog();type.set('weight')"></app-settings-metric>
+    <app-settings-metric [title]="'settings.weight'|translate" [value]="weight()" (onValueChange)="showDialog();type.set('weight')"></app-settings-metric>
   </div>
   <!-- Settings Grid -->
   <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 md:w-3xl mx-auto gap-6">
 
-    <app-settings-item [title]="'Change Password'" [icon]="'pi pi-refresh'" (onValueChange)="showDialog();type.set('pass') "></app-settings-item>
-    <app-settings-item [title]="'Select Language'" [icon]="'pi pi-globe'" (onValueChange)="showDialog();type.set('lang')"></app-settings-item>
-    <app-settings-item [title]="'Mood'" [icon]="'pi pi-moon'" (onValueChange)="showDialog();type.set('mood')"></app-settings-item>
-    <app-settings-item [title]="'Security'" [icon]="'pi pi-shield'"  ></app-settings-item>
-    <app-settings-item [title]="'Privacy Policy'" [icon]="'pi pi-lock'"  ></app-settings-item>
-    <app-settings-item [title]="'Help'" [icon]="'pi pi-question-circle'" ></app-settings-item>
+    <app-settings-item [title]="'settings.changepassword.changepassword'|translate" [icon]="'pi pi-refresh'" (onValueChange)="showDialog();type.set('pass') "></app-settings-item>
+    <app-settings-item [title]="'settings.selectlanguage'|translate" [icon]="'pi pi-globe'" (onValueChange)="showDialog();type.set('lang')"></app-settings-item>
+    <app-settings-item [title]="'settings.selectmood'|translate" [icon]="'pi pi-moon'" type="mood"></app-settings-item>
+    <app-settings-item [title]="'settings.security'|translate" [icon]="'pi pi-shield'"  ></app-settings-item>
+    <app-settings-item [title]="'settings.privacy'|translate" [icon]="'pi pi-lock'"  ></app-settings-item>
+    <app-settings-item [title]="'settings.help'|translate" [icon]="'pi pi-question-circle'" ></app-settings-item>
     
      
   </div>
@@ -27,7 +27,7 @@
   <!-- Logout -->
   <button class="glass-card mt-8 cursor-pointer w-48  mx-auto " (click)="logout()">
     <i class="pi pi-sign-out text-secondary text-2xl mb-3"></i>
-    <p class="text-center text-lg text-secondary">Logout</p>
+    <p class="text-center text-lg text-secondary">{{'settings.logout'|translate}}</p>
   </button>
 </div>
 
@@ -48,7 +48,7 @@
            </app-metric-step>
       
 
-            <custom-button (onClick)="changeMetricValue({'weight': weight()})" [isloading]="isloading()" [disabled]="disabled()" [label]="'submit'"   class="w-full max-w-md my-4"></custom-button>
+            <custom-button (onClick)="changeMetricValue({'weight': weight()!})" [isloading]="isloading()" [disabled]="disabled()" [label]="'submit'"   class="w-full max-w-md my-4"></custom-button>
         </div>     
     }
       @case ("goal") {
@@ -94,7 +94,7 @@
      @case ("lang") {
              <div class="card flex justify-center items-center h-20">
 
-                  <p-selectbutton [options]="[{ label: 'عربي', value: 'عربي' },{ label: 'ُEnglish', value: 'english' }]" [(ngModel)]="langValue" optionLabel="label" optionValue="value" aria-labelledby="basic" />
+                  <p-selectbutton [options]="[{ label: 'عربي', value: 'ar' },{ label: 'ُEnglish', value: 'en' }]" [(ngModel)]="langValue"    (ngModelChange)="changeLanguage($event)" optionLabel="label" optionValue="value" aria-labelledby="basic" />
 
              </div>
       }

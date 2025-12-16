@@ -39,10 +39,10 @@ export class SettingsPageComponent implements OnInit {
   
  type = signal<"weight" | "level" | "goal" |"pass" |"lang"|"mood">("weight");
  
-  user=signal<User>(JSON.parse(this._safeStorage.get('user')!))
-  weight:WritableSignal<number>=signal(this.user().weight)
-  level:WritableSignal<string>=signal(this.user().activityLevel)
-  goal:WritableSignal<string>=signal(this.user().goal)
+user: WritableSignal<User> = signal({}as User);
+weight: WritableSignal<number > = signal(0);
+level: WritableSignal<string> = signal('');
+goal: WritableSignal<string > = signal('');
 
 
  visible: boolean = false;
@@ -67,6 +67,18 @@ ngOnInit(): void {
        
     } 
 );
+
+ const storedUser = this._safeStorage.get('user');
+
+  if (storedUser) {
+    const parsedUser = JSON.parse(storedUser);
+    this.user.set(parsedUser);
+
+    this.weight.set(parsedUser.weight);
+    this.level.set(parsedUser.activityLevel);
+    this.goal.set(parsedUser.goal);
+  }
+
     
   }
 
@@ -145,7 +157,9 @@ logout() {
       })
     )
     .subscribe({
-      next: () => {},
+      next: () => {
+        this._toastr.success('Logged out successfully', 'Success');
+      },
       error: () => {},
     });
 }

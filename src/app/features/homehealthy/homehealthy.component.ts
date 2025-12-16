@@ -26,12 +26,10 @@ export class HomehealthyComponent  implements OnInit{
       next:(res)=>
       {
         this.meals=res.categories.slice(0,3)
-        console.log(res);
-      },
+       },
       error:(err)=>
       {
-        console.log(err);
-        
+         
 
       }
     })

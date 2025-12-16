@@ -35,7 +35,8 @@
     "email": "البريد الإلكتروني",
     "password": "كلمة المرور",
     "dont have an account?": "ليس لديك حساب؟",
-    "register here": "سجّل هنا"
+    "register here": "سجّل هنا",
+    "or": "أو"
   },
 
   "register": {
@@ -46,5 +47,11 @@
     "confirm password": "تأكيد كلمة المرور",
     "already have an account?": "لديك حساب بالفعل؟",
     "login here": "سجّل من هنا"
+  },
+  "toast": {
+    "success": "نجاح",
+    "error": "خطأ",
+    "warning": "تحذير",
+    "info": "معلومات"
   }
 }
