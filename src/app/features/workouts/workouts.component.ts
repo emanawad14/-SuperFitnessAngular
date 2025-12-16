@@ -4,24 +4,26 @@ import { MusclesIdService } from '../../core/services/musclesId/muscles-id.servi
 import { Imuscles } from '../../shared/interfaces/muscles/imuscles.interface';
 import { ImusclesId } from '../../shared/interfaces/musclesid/imusclesid.interface';
 import { Subscription } from 'rxjs';
-import { TabsComponent } from "../../shared/components/tabs/tabs.component";
-import { CardsComponent } from "../../shared/components/cards/cards.component";
-import { RouterLink } from "@angular/router";
+import { TabsComponent } from '../../shared/components/tabs/tabs.component';
+import { CardsComponent } from '../../shared/components/cards/cards.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-workouts',
+  standalone: true,
   templateUrl: './workouts.component.html',
   styleUrls: ['./workouts.component.scss'],
-  imports: [TabsComponent, CardsComponent, RouterLink]
+  imports: [TabsComponent, CardsComponent, RouterLink],
 })
 export class WorkoutsComponent implements OnInit, OnDestroy {
+  selectedDifficultyId!: string;
 
-  selectedMuscle: string = '';
+  selectedMuscle = '';
   muscles: { id: string; name: string }[] = [];
   muscleCards: ImusclesId[] = [];
 
-  subscription1?: Subscription;
-  subscription2?: Subscription;
+  private sub1?: Subscription;
+  private sub2?: Subscription;
 
   private readonly musclesgroupService = inject(MusclesgroupService);
   private readonly musclesIdService = inject(MusclesIdService);
@@ -31,31 +33,29 @@ export class WorkoutsComponent implements OnInit, OnDestroy {
   }
 
   getAllMuscles() {
-    this.subscription1 = this.musclesgroupService.getAllMusclesGroup().subscribe({
+    this.sub1 = this.musclesgroupService.getAllMusclesGroup().subscribe({
       next: (res) => {
-
-    
         this.muscles = res.musclesGroup.slice(0, 7).map((m: Imuscles) => ({
           id: m._id,
-          name: m.name
+          name: m.name,
         }));
 
-        if (this.muscles.length > 0) {
+        if (this.muscles.length) {
           const first = this.muscles[0];
           this.selectedMuscle = first.name;
+          console.log(`--> ${this.muscles}`);
+          console.log(`--> (@) ${this.selectedMuscle}`);
           this.getIdMuscles(first.id);
         }
       },
-      error: (err) => console.log(err)
     });
   }
 
   getIdMuscles(id: string) {
-    this.subscription2 = this.musclesIdService.getAllMusclesGroupID(id).subscribe({
+    this.sub2 = this.musclesIdService.getAllMusclesGroupID(id).subscribe({
       next: (res) => {
         this.muscleCards = res.muscles;
       },
-      error: (err) => console.log(err)
     });
   }
 
@@ -65,7 +65,7 @@ export class WorkoutsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription1?.unsubscribe();
-    this.subscription2?.unsubscribe();
+    this.sub1?.unsubscribe();
+    this.sub2?.unsubscribe();
   }
 }

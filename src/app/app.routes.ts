@@ -46,13 +46,24 @@ export const routes: Routes = [
           import('./features/healthy/healthy.component').then((c) => c.HealthyComponent),
         title: 'Healthy'
       },
+      {
+        path: 'details-meals/:id',
+        loadComponent: () =>
+          import('./features/meals-details/meals-details.component').then((c) => c.MealsDetailsComponent),
+        title: 'details-meals'
+      },
+
+
 
       {
-        path: 'classId/:id',
-        loadComponent: () =>
-          import('./features/classes/classes.component').then((c) => c.ClassesComponent),
-        title: 'classId'
-      }
+ path: 'classId/:id',
+
+  loadComponent: () =>
+    import('./features/classes/classes.component')
+      .then(c => c.ClassesComponent),
+  title: 'classId'
+}
+
     ]
   },
 

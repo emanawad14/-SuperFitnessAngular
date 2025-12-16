@@ -25,7 +25,7 @@
     <ul class="flex flex-wrap justify-center items-center mb-10 sm:mb-16 md:mb-60 px-4 gap-4">
       <app-tabs
         [tabs]="muscles"
-        [activeTab]="selectedMuscle"
+        [defaultActiveTab]="selectedMuscle"
         (tabClick)="setActive($event.name, $event.id)"
       ></app-tabs>
     </ul>
@@ -39,8 +39,9 @@
   <app-cards
     [image]="card.image"
     [title]="card.name"
-   [routerLink]="['/classId', card._id]"
-    actionText="Explore"
+  [routerLink]="['/classId', card._id]"
+  [queryParams]="{ difficultyId: selectedDifficultyId }"
+  actionText="Explore"
     icon="fa-solid fa-up-right-from-square"
   />
 }

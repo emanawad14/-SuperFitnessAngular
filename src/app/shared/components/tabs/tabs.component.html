@@ -1,32 +1,23 @@
-<!-- <ul class="flex flex-wrap justify-center items-center gap-4">
-  @for (tab of tabs; track tab.id) {
-    <li>
-      <button
-        class="py-2 px-6 text-[18px] font-bold font-semibold rounded-full transition duration-200 "
-        (click)="setActiveTab(tab)"
-        [ngClass]="{
-          'bg-[#ff4500] text-white border-[#ff4500]': activeTab === tab.name,
-          'text-black ': activeTab !== tab.name
-        }"
-      >
-        {{ tab.name }}
-      </button>
-    </li>
-  }
-</ul> -->
-<div class="relative w-full">
-  <owl-carousel-o [options]="carouselOptions" class="tabs-carousel">
-    <ng-template carouselSlide *ngFor="let tab of tabs">
-        <button
-          class="py-2 px-6 text-[18px] font-bold rounded-full transition duration-200 whitespace-nowrap"
-          (click)="setActiveTab(tab)"
-          [ngClass]="{
-            'bg-[#ff4500] text-white border-[#ff4500]': activeTab === tab.name,
-            'text-black': activeTab !== tab.name
-          }"
-        >
-          {{ tab.name }}
-        </button>
-    </ng-template>
-  </owl-carousel-o>
-</div>
+<p-carousel
+  [value]="tabs"
+  [numVisible]="3"
+  [numScroll]="3"
+  [responsiveOptions]="responsiveOptions"
+  [showIndicators]="false"
+  [circular]="false"
+  class="my-4"
+>
+  <ng-template pTemplate="item" let-tab>
+    <button
+      (click)="setActiveTab(tab)"
+      [ngClass]="{
+        'bg-[#ff4500] text-white border-[#ff4500]':
+          tab.id == activeTab || tab.name == defaultActiveTab,
+        'text-p-text bg-transparent': tab.id !== activeTab && tab.name != defaultActiveTab
+      }"
+      class="px-4 py-2 rounded-3xl font-bold capitalize transition-colors text-xl sm:text-base cursor-pointer"
+    >
+      {{ tab.name }}
+    </button>
+  </ng-template>
+</p-carousel>
