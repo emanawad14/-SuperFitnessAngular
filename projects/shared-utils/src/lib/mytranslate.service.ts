@@ -1,5 +1,4 @@
-import { isPlatformBrowser } from '@angular/common';
-import { inject, Inject, Injectable, RendererFactory2 } from '@angular/core';
+ import { inject, Injectable, RendererFactory2 } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { SafeStorage } from './safe-storage';
 

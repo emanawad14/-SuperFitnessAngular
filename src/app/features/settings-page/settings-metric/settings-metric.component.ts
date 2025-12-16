@@ -1,8 +1,9 @@
 import { Component, input, output } from '@angular/core';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-settings-metric',
-  imports: [],
+  imports: [TranslatePipe],
   templateUrl: './settings-metric.component.html',
   styleUrl: './settings-metric.component.scss',
 })

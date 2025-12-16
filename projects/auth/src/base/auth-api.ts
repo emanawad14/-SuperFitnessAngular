@@ -16,6 +16,8 @@ export abstract class AuthAPI {
   abstract verifyOtp(data: verifyOtp): Observable<verifyOtpResponse>;
   abstract resetPassword(data:reset): Observable<resetResponse>;
   abstract editProfile(data:EditProfile): Observable<EditProfileResponse>;
+  abstract logout(): Observable<string>;
+
   }
 
  

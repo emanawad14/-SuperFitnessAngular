@@ -37,7 +37,8 @@
     "email":"Email",
     "password":"Password",
     "dont have an account?":"Don't have an account?",
-    "register here":"Register here"
+    "register here":"Register here",
+    "or":"or"
   },
   "register":{
     "register to your account":"Register to your account",
@@ -47,6 +48,13 @@
     "confirm password":"Confirm Password",
     "already have an account?":"Already have an account?",
     "login here":"Login here"
+  },
+   "toast": {
+    "success": "Success ahmed",
+    "error": "Error ahmed",
+    "warning": "Warning",
+    "info": "Info"
   }
+
 
  }

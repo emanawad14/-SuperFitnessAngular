@@ -3,8 +3,9 @@
       <div 
        class="text-sm text-primary  mb-3 underline cursor-pointer" 
       (click)="valueChange()">
-      {{textLink()}}
-      </div>
+      <!-- {{textLink()}} -->
+    {{ 'settings.tap' | translate }}
+    </div>
 
       <div class="flex items-center justify-between bg-secondary border border-primary rounded-full px-5 py-3 shadow-xl ">
         <span>{{value()}}</span>
