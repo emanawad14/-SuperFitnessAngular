@@ -5,11 +5,12 @@ import { HealthyService } from '../../core/services/healthy/healthy.service';
 import { TabsComponent } from '../../shared/components/tabs/tabs.component';
 import { IMealItem } from '../../shared/interfaces/healthy/ihealthy.interface';
 import { IMeals } from '../../shared/interfaces/IMeal';
+import { SliderComponent } from "../../shared/components/slider/slider.component";
 
 @Component({
   selector: 'app-meals-details',
   standalone: true,
-  imports: [CommonModule, TabsComponent],
+  imports: [CommonModule, TabsComponent, SliderComponent],
   templateUrl: './meals-details.component.html',
   styleUrl: './meals-details.component.scss',
 })

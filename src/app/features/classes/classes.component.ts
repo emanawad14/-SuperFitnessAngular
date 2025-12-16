@@ -17,11 +17,12 @@ import { DifficultyLevel } from '../../shared/interfaces/levels/ilevels.interfac
 import { Imuscles } from '../../shared/interfaces/muscles/imuscles.interface';
 import { ImusclesId } from '../../shared/interfaces/musclesid/imusclesid.interface';
 import { IMealItem } from '../../shared/interfaces/healthy/ihealthy.interface';
+import { SliderComponent } from "../../shared/components/slider/slider.component";
 
 @Component({
   selector: 'app-classes',
   standalone: true,
-  imports: [CommonModule, TabsComponent, CardsComponent],
+  imports: [CommonModule, TabsComponent, CardsComponent, SliderComponent],
   templateUrl: './classes.component.html',
   styleUrls: ['./classes.component.scss'],
 })
