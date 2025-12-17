@@ -1,16 +1,18 @@
 <div class="relative">
   <button
+    type="button"
+    (click)="onClick(type)"
     [ngClass]="{
-      'bg-[#e63e00] text-white': type === 'login',
-      'bg-white/80 border border-[#e63e00] text-[#e63e00]': type === 'signup'
-    }"
-    class="px-6 py-2 rounded-full font-semibold"
+      'bg-secondary text-primary': type === 'login' || type === 'logout',
+      'bg-primary border border-secondary text-secondary': type === 'signup',
+       }"
+    class="px-6 py-2 rounded-full font-semibold cursor-pointer"
   >
     {{ text }}
   </button>
 
   <div class="absolute -right-7 top-1/2 -translate-y-1/2">
-    <div class="bg-[#e63e00] text-white p-2 rounded-full border border-white shadow-lg flex items-center justify-center w-10 h-10">
+    <div class="bg-secondary text-primary p-2 rounded-full border border-primary shadow-lg flex items-center justify-center w-10 h-10">
       <i class="fa-solid fa-up-right-from-square"></i>
     </div>
   </div>

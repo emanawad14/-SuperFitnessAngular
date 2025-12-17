@@ -1,49 +1,93 @@
-<nav class="fixed w-full bg-[#FFFFFF99] z-20 top-0 start-0 shadow-md">
+ <nav class="fixed w-full bg-site z-20 top-0 start-0 shadow-md">
   <div class="max-w-screen-xl mx-auto flex items-center justify-between p-4">
 
-  
-    <a href="#" class="flex items-center space-x-2 rtl:space-x-reverse">
-      <img src="images/auth1.png" class="h-10" alt="Logo" />
-    </a>
+    <!-- Logo -->
+      <a routerLink="/" class="flex items-center space-x-2 rtl:space-x-reverse">
+        <img src="images/auth1.png" class="h-10" alt="Logo" />
+      </a>
+    <!-- toggle button && profile button -->
+      <div class="flex items-center gap-3 md:hidden">
+        <button
+              class="cursor-pointer w-10 h-10 rounded-full bg-white/80 hover:bg-white shadow flex items-center justify-center"
+               [hidden]="!isloggedIn()"
+              routerLink="/settings"
+              aria-label="Profile"
+            >
+              <svg class="w-6 h-6 text-[#e63e00]" fill="none" viewBox="0 0 24 24">
+                <path
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"
+                />
+              </svg>
+        </button>
+        <button type="button"
+          class="cursor-pointer inline-flex items-center justify-center p-2 w-12 h-12 rounded-full  bg-white/70 hover:bg-white/90 shadow"
+          (click)="toggleMobileMenu()">
+          <svg class="w-6 h-6 text-[#e63e00]" fill="none" viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    
+   <!-- large screen -->
+      <div class="hidden md:flex items-center justify-between w-full">
+          <ul class="flex mx-auto space-x-20 rtl:space-x-reverse font-semibold">
+            <li><a routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" class="font-bold text-white cursor-pointer">{{ 'navbar.home' | translate }}</a></li>
+            <li><a class="font-bold text-primary" routerLink="about" routerLinkActive="active-link cursor-pointer" >{{ 'navbar.about' | translate }}</a></li>
+            <li><a class="font-bold text-primary" routerLink="classes" routerLinkActive="active-link cursor-pointer" >{{ 'navbar.classes' | translate }}</a></li>
+            <li><a class="font-bold text-primary" routerLink="healthy" routerLinkActive="active-link cursor-pointer " >{{ 'navbar.healthy' | translate }}</a></li>
+          </ul>
+           
+          <div class="flex items-center gap-10">
+            <app-button type="login" text="LOG IN" [hidden]="isloggedIn()" (onClickEvent)="navigate($event)"></app-button>
+            <app-button type="signup" text="SIGN UP" [hidden]="isloggedIn()" (onClickEvent)="navigate($event)"></app-button>
+            <app-button type="logout" text="LOG OUT" [hidden]="!isloggedIn()" (onClickEvent)="navigate($event)"></app-button>
+            <button
+                  [hidden]="!isloggedIn()"
+                  class="cursor-pointer w-10 h-10 rounded-full bg-white/80 hover:bg-white shadow flex items-center justify-center"
+                  routerLink="/settings"
+                  aria-label="Profile"
+                >
+                  <svg class="w-6 h-6 text-[#e63e00]" fill="none" viewBox="0 0 24 24">
+                    <path
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"
+                    />
+                  </svg>
+            </button>
+          </div>
+      
+      </div>
 
-   
-    <button type="button"
-      class="inline-flex items-center justify-center p-2 w-12 h-12 rounded-full md:hidden bg-white/70 hover:bg-white/90 shadow"
-      (click)="toggleMobileMenu()">
-      <svg class="w-6 h-6 text-[#e63e00]" fill="none" viewBox="0 0 24 24">
-        <path stroke="currentColor" stroke-width="2" stroke-linecap="round"
-          d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
-    </button>
 
 
-   <div class="hidden md:flex items-center justify-between w-full">
-  <ul class="flex mx-auto space-x-20 rtl:space-x-reverse font-semibold">
-    <li><a routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" class="font-bold text-white">{{ 'navbar.home' | translate }}</a></li>
-    <li><a class="font-bold text-white" routerLink="about" routerLinkActive="active-link" >{{ 'navbar.about' | translate }}</a></li>
-    <li><a class="font-bold text-white" routerLink="classes" routerLinkActive="active-link" >{{ 'navbar.classes' | translate }}</a></li>
-    <li><a class="font-bold text-white" routerLink="healthy" routerLinkActive="active-link" >{{ 'navbar.healthy' | translate }}</a></li>
-  </ul>
 
-  <div class="flex items-center gap-10">
-    <app-button type="login" text="LOG IN"></app-button>
-    <app-button type="signup" text="SIGN UP"></app-button>
   </div>
-</div>
 
-  </div>
-
-  
+  <!-- Mobile screen -->
   <div [class.hidden]="!mobileMenuOpen"
-       class="md:hidden p-6 space-y-4 border-t bg-white/95 shadow-lg rounded-b-xl">
-    <a class="block text-lg font-semibold hover:text-[#e63e00]">{{ 'navbar.home' | translate }}</a>
-    <a class="block text-lg font-semibold hover:text-[#e63e00]">{{ 'navbar.about' | translate }}</a>
-    <a class="block text-lg font-semibold hover:text-[#e63e00]">{{ 'navbar.classes' | translate }}</a>
-    <a class="block text-lg font-semibold hover:text-[#e63e00]">{{ 'navbar.healthy' | translate }}</a>
+        class="md:hidden p-6 space-y-4 border-t bg-white/95 shadow-lg rounded-b-xl">
+      <a class="block text-lg font-semibold hover:text-[#e63e00]">{{ 'navbar.home' | translate }}</a>
+      <a class="block text-lg font-semibold hover:text-[#e63e00]">{{ 'navbar.about' | translate }}</a>
+      <a class="block text-lg font-semibold hover:text-[#e63e00]">{{ 'navbar.classes' | translate }}</a>
+      <a class="block text-lg font-semibold hover:text-[#e63e00]">{{ 'navbar.healthy' | translate }}</a>
 
-    <div class="pt-4 flex flex-col gap-3">
-      <app-button type="login" text="{{ 'navbar.login' | translate }}"></app-button>
-      <app-button type="signup" text="{{ 'navbar.signup' | translate }}"></app-button>
-    </div>
+      <div class="pt-4 flex flex-col gap-3">
+        <app-button type="login" text="{{ 'navbar.login' | translate }}" [hidden]="isloggedIn()" (onClickEvent)="navigate($event)"></app-button>
+        <app-button type="signup" text="{{ 'navbar.signup' | translate }}" [hidden]="isloggedIn()" (onClickEvent)="navigate($event)"></app-button>
+        <app-button type="logout" text="{{ 'navbar.logout' | translate }}" [hidden]="!isloggedIn()" (onClickEvent)="navigate($event)"></app-button>
+
+    
+      </div>
   </div>
-</nav>
+</nav> 
+
+
+  

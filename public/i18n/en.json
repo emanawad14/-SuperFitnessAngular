@@ -30,7 +30,8 @@
     "classes":"Classes",
     "healthy":"Healthy",
      "login":"Sign In",
-     "signup":"Sign Up"
+     "signup":"Sign Up",
+     "logout":"Logout"
   },
   "login":{
     "login to your account":"Login to your account",
@@ -54,6 +55,16 @@
     "error": "Error ahmed",
     "warning": "Warning",
     "info": "Info"
+  },
+  "error": {
+
+    "emailexists": "Email already exists",
+    "required": "This field is required",
+    "email": "Please enter a valid email address",
+    "minlength": "The value is too short",
+    "maxlength": "The value is too long",
+    "passwordmismatch": "Passwords do not match",
+    "invalidcredentials": "Invalid email or password"
   }
 
 
