@@ -2,6 +2,7 @@
 import { inject } from '@angular/core';
 import { ToastService } from './toast.service';
 import { catchError, throwError } from 'rxjs';
+import {AuthEndpoints} from '../../../auth/src/enums/AuthEndpoints';
 
 export const errorInterceptor: HttpInterceptorFn = (req, next) => {
   const toast = inject(ToastService);
@@ -18,8 +19,13 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
             message = error.error.error || 'Invalid request. Please check your data.';
             break;
           case 401:
-            message = error.error.error || 'Unauthorized access. Please log in';
-            break;
+               {
+                if (error.url?.includes(AuthEndpoints.get_logged_user)) {
+                  return throwError(() => error);
+                }
+                message = error.error.error || 'Unauthorized access. Please log in';
+                break;
+              }
           case 403:
             message = 'You don’t have permission to perform this action';
             break;

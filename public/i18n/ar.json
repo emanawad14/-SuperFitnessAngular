@@ -27,7 +27,8 @@
     "classes": "الحصص",
     "healthy": "الصحة",
     "login": "تسجيل الدخول",
-    "signup": "إنشاء حساب"
+    "signup": "إنشاء حساب",
+    "logout": "تسجيل الخروج"
   },
 
   "login": {
@@ -53,5 +54,12 @@
     "error": "خطأ",
     "warning": "تحذير",
     "info": "معلومات"
+  },
+  "error": {
+    "emailexists": "البريد الإلكتروني موجود بالفعل",
+    "invalidcredentials": "بيانات اعتماد غير صالحة",
+    "passwordmismatch": "كلمات المرور غير متطابقة",
+    "requiredfield": "هذا الحقل مطلوب",
+    "weakpassword": "كلمة المرور ضعيفة"
   }
 }

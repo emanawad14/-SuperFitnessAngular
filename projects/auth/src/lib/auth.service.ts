@@ -1,7 +1,7 @@
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { AuthAPI } from '../base/auth-api';
-import { Observable } from 'rxjs';
-import { LoginRequest, LoginResponse } from '../interfaces/login.interface';
+import { finalize, Observable, tap } from 'rxjs';
+import { LoginRequest, LoginResponse, User } from '../interfaces/login.interface';
  import { Signup, SignupResponse } from '../interfaces/signup.interface';
 import { HttpClient } from '@angular/common/http';
  import { AuthEndpoints } from '../enums/AuthEndpoints';
@@ -14,6 +14,9 @@ import { EditProfile, EditProfileResponse } from '../interfaces/editProfile.inte
 })
 export class AuthService implements AuthAPI {
     private _http=inject(HttpClient)
+
+  //   user = signal<User | null>(null);
+  // loadingUser = signal(false);
 
 
    
@@ -45,6 +48,22 @@ export class AuthService implements AuthAPI {
    logout():Observable<string>{
     return this._http.get<string>(environment.baseUrl+AuthEndpoints.LOGOUT)
    }
+  loadLoggedUser(): Observable<any> {
+  // this.loadingUser.set(true);
+
+  return this._http.get<any>(
+    environment.baseUrl + AuthEndpoints.get_logged_user
+  )}
+  
+//   .pipe(
+//     tap(user => this.user.set(user)),
+//     finalize(() => this.loadingUser.set(false))
+//   );
+// }
+// isLoggedIn() {
+//   return !!this.user();
+// }
+
 
  
    
