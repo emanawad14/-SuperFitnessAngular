@@ -23,7 +23,7 @@
       <ul class="flex flex-wrap justify-center items-center mb-10 sm:mb-16 md:mb-60 px-4 gap-4">
        <app-tabs
   [tabs]="categories"
-  [activeTab]="selectedCategory"
+  [defaultActiveTab]="selectedCategory"
   (tabClick)="setActive($event.name, $event.id)"
 ></app-tabs>
 
@@ -42,6 +42,7 @@
 
       @for (item of subCategory; track item.idMeal) {
   <app-cards
+  [routerLink]="['/details-meals',item.idMeal]"
     [image]="item.strMealThumb"
     [title]="item.strMeal"
     actionText="Read More"
