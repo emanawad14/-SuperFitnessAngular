@@ -1,62 +1,103 @@
-<section class="py-30">
+<section class="py-20 bg-[#24242499] text-white">
+
+  <div class="flex justify-center mt-14">
+    <img src="/images/WOrkouts.png" alt="Classes">
+  </div>
+
+ 
+  <app-tabs
+    [tabs]="muscles"
+    [defaultActiveTab]="selectedMuscle"
+    (tabClick)="setActive($event.name, $event.id)">
+  </app-tabs>
+
+  <div class="container mx-auto grid grid-cols-12 gap-8 mt-10">
+
+   
+    <div class="col-span-12 lg:col-span-4 space-y-6">
+
+      <app-tabs
+        [tabs]="levels"
+        (tabClick)="onLevelChange($event)">
+      </app-tabs>
+
+      @for (item of exercises; track item._id) {
+        <div
+          (click)="selectExercise(item)"
+          class="flex gap-4 p-3 rounded-xl bg-[#1a1a1a] cursor-pointer hover:bg-[#222]">
+
+          <img src="/images/9fc1479991afbe3e06994af84a9152cffeefc8d9.jpg" class="w-16 h-16 rounded-full">
+
+          <div>
+            <h4 class="font-semibold">{{ item.exercise }}</h4>
+            <p class="text-sm text-gray-400">{{ item.target_muscle_group }}</p>
+          </div>
+        </div>
+      }
+    </div>
+
   
+    <div class="col-span-12 lg:col-span-8" *ngIf="videoUrl">
 
-  <div class="flex justify-center mb-10">
-    <img src="/images/WOrkouts.png" class="w-auto" alt="Workouts">
+      <iframe
+        [src]="videoUrl"
+        class="w-full aspect-video rounded-xl">
+      </iframe>
+
+      <h2 class="text-3xl font-bold mt-6">
+        {{ selectedExercise?.exercise }}
+      </h2>
+
+
+
+
+       <section class="flex justify-center mt-12 items-center gap-25">
+  <div class="flex justify-center items-center gap-4">
+    <img src="/images/Vector.png" alt="Vector" 
+    class="rounded-full h-6 w-6 text-white bg-[#ff4500] p-4 flex justify-center 
+     items-center"
+    
+    />
+   <h2 class="font-bold ">Expertly designed workout.</h2>
   </div>
-
-
-  <div class="flex justify-center">
-    <app-tabs
-      [tabs]="muscles"
-      [activeTab]="selectedMuscle"
-      (tabClick)="setActive($event.name, $event.id)"
-    ></app-tabs>
+  <div class="flex justify-center items-center gap-4">
+    <img src="/images/Vector.png" alt="Vector" 
+    class="rounded-full h-6 w-6 text-white bg-[#ff4500] p-4 flex justify-center 
+     items-center"
+    
+    />
+  <h2 class="font-bold ">Expertly designed workout.</h2>
   </div>
-
- <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
-
-    <div>
+  <div class="flex justify-center items-center gap-4">
+    <img src="/images/Vector.png" alt="Vector" 
+    class="rounded-full h-6 w-6 text-white bg-[#ff4500] p-4 flex justify-center 
+     items-center"
+    
+    />
+   <h2 class="font-bold ">Expertly designed workout.</h2>
+  </div>
+   
+</section>
 
      
-      @if (loading) {
-        <p class="text-center text-blue-500 text-lg py-6">loading</p>
-      }
+      <section class="mt-14">
+        <h2 class="text-2xl font-bold mb-6">Recommendation For You</h2>
 
-     
-      @else if (exercies.length === 0) {
-        <p class="text-center text-red-500 text-lg py-6">no data </p>
-      }
-
-      
-      @else {
-        @for (item of exercies; track item._id) {
-          <img 
-            [src]="item.short_youtube_demonstration" 
-            alt="Exercise Image"
-            class="w-full rounded-xl shadow-md mb-6"
-          >
-        }
-      }
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          @for (item of subCategory; track item.idMeal) {
+            <app-cards
+              [routerLink]="['/details-meals', item.idMeal]"
+              [image]="item.strMealThumb"
+              [title]="item.strMeal"
+              actionText="Read More">
+            </app-cards>
+          }
+        </div>
+      </section>
 
     </div>
-
-
-    <div>
-      
-    </div>
-
   </div>
-
 </section>
 
 
-
-
-
-
-
-
-
-
-
+<app-slider></app-slider>

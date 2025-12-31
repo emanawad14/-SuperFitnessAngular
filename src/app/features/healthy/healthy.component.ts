@@ -4,11 +4,12 @@ import { HealthyService } from '../../core/services/healthy/healthy.service';
 import { TabsComponent } from "../../shared/components/tabs/tabs.component";
 import { CardsComponent } from "../../shared/components/cards/cards.component";
 import {  IMealItem } from '../../shared/interfaces/healthy/ihealthy.interface';
+import { RouterLink } from "@angular/router";
 @Component({
   selector: 'app-healthy',
   templateUrl: './healthy.component.html',
   styleUrls: ['./healthy.component.scss'],
-  imports: [TabsComponent, CardsComponent]
+  imports: [TabsComponent, CardsComponent, RouterLink]
 })
 export class HealthyComponent implements OnInit, OnDestroy {
 

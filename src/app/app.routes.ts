@@ -1,21 +1,14 @@
 import { Routes } from '@angular/router';
 import { AuthLayoutComponent } from './core/auth/layouts/auth-layout/auth-layout.component';
-import { LoginComponent } from './core/auth/login/login.component';
-import { RegisterComponent } from './core/auth/register/register.component';
-import { OtpComponent } from './core/auth/otp/otp.component';
-import { ForgetPasswordComponent } from './core/auth/forget-password/forget-password.component';
-import { NewPasswordComponent } from './core/auth/new-password/new-password.component';
 import { MainLayoutComponent } from './core/auth/layouts/main-layout/main-layout.component';
- 
- 
- 
+
 export const routes: Routes = [
 
- 
+  /* ================= Main Layout ================= */
   {
     path: '',
     component: MainLayoutComponent,
-     children: [
+    children: [
 
       {
         path: '',
@@ -49,6 +42,24 @@ export const routes: Routes = [
         title: 'Class Details'
       },
 
+      /* ✅ لو لسه محتاجاه */
+      {
+        path: 'classId/:id',
+        loadComponent: () =>
+          import('./features/classes/classes.component')
+            .then(c => c.ClassesComponent),
+        title: 'Class By Id'
+      },
+
+      {
+        path: 'details-meals/:id',
+        loadComponent: () =>
+          import('./features/meals-details/meals-details.component')
+            .then(c => c.MealsDetailsComponent),
+        title: 'Meal Details'
+      },
+
+      /* ✅ Route جاي من main */
       {
         path: 'settings',
         loadComponent: () =>
@@ -59,11 +70,11 @@ export const routes: Routes = [
     ]
   },
 
- 
+  /* ================= Auth Layout ================= */
   {
     path: '',
     component: AuthLayoutComponent,
-     children: [
+    children: [
 
       {
         path: 'login',
@@ -107,11 +118,9 @@ export const routes: Routes = [
     ]
   },
 
-   
+  /* ================= Fallback ================= */
   {
     path: '**',
     redirectTo: ''
   }
 ];
-
-

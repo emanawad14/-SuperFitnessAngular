@@ -1,65 +1,42 @@
-// import { NgClass } from '@angular/common';
-// import { Component, EventEmitter, Input, Output } from '@angular/core';
-
-// @Component({
-//   selector: 'app-tabs',
-//   standalone: true,
-//   imports: [NgClass],
-//   templateUrl: './tabs.component.html',
-//   styleUrls: ['./tabs.component.scss'],
-// })
-// export class TabsComponent {
-
-//   @Input() tabs: { id: string; name: string }[] = [];
-//   @Input() activeTab: string = ''; 
-
-//   @Output() tabClick = new EventEmitter<{ id: string; name: string }>();
-
-//   setActiveTab(tab: { id: string; name: string }) {
-//     this.tabClick.emit(tab);
-//   }
-  
-// }
-
-
-
-import { NgClass, NgFor } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { NgClass } from '@angular/common';
+import { CarouselModule } from 'primeng/carousel';
 
 @Component({
   selector: 'app-tabs',
   standalone: true,
-  imports: [NgClass, NgFor, CarouselModule],
+  imports: [NgClass, CarouselModule],
   templateUrl: './tabs.component.html',
   styleUrls: ['./tabs.component.scss'],
 })
-export class TabsComponent {
+export class TabsComponent implements OnInit {
 
   @Input() tabs: { id: string; name: string }[] = [];
-  @Input() activeTab: string = '';
-
+  @Input() defaultActiveTab: string = ''; 
   @Output() tabClick = new EventEmitter<{ id: string; name: string }>();
 
-  carouselOptions: OwlOptions = {
-    loop: false,
-    margin: 20,
-    dots: false,
-    autoWidth: true,
-    nav: true,     
-    navText: [
-      '<i class="fa-solid fa-chevron-left"></i>',
-      '<i class="fa-solid fa-chevron-right"></i>'
-    ],
-    responsive: {
-      0: { items: 19 },
-      400: { items: 8 },
-      768: { items: 10 },
-      1024: { items: 1 }
+  activeTab: string = ''; 
+
+  responsiveOptions = [
+    { breakpoint: '1024px', numVisible: 3, numScroll: 3 },
+    { breakpoint: '768px', numVisible: 2, numScroll: 2 },
+    { breakpoint: '560px', numVisible: 1, numScroll: 1 },
+  ];
+
+  ngOnInit() {
+    this.activeTab = this.defaultActiveTab || (this.tabs.length > 0 ? this.tabs[0].id : '');
+    console.log(this.defaultActiveTab);
+    console.log(this.tabs);
+    
+    
+    if (this.activeTab && this.tabs.length > 0) {
+      const initialTab = this.tabs.find(t => t.id === this.activeTab) || this.tabs[0];
+      this.tabClick.emit(initialTab);
     }
-  };
+  }
 
   setActiveTab(tab: { id: string; name: string }) {
+    this.activeTab = tab.id; 
     this.tabClick.emit(tab);
   }
 }
