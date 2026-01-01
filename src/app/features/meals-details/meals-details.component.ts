@@ -1,11 +1,11 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
-import { HealthyService } from '../../core/services/healthy/healthy.service';
-import { TabsComponent } from '../../shared/components/tabs/tabs.component';
+ import { TabsComponent } from '../../shared/components/tabs/tabs.component';
 import { IMealItem } from '../../shared/interfaces/healthy/ihealthy.interface';
 import { IMeals } from '../../shared/interfaces/IMeal';
 import { SliderComponent } from "../../shared/components/slider/slider.component";
+import { HealthyService } from '../healthy/services/healthy/healthy.service';
 
 @Component({
   selector: 'app-meals-details',

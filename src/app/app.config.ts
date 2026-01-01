@@ -13,6 +13,8 @@ import { loadingInterceptor } from '../../projects/shared-utils/src/lib/loading.
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { headerInterceptor } from './core/interceptors/header.interceptor';
+import {  BASE_URL1, BASE_URL2 } from '../../projects/auth/src/base/token';
+import { environment } from '../environments/environment';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, '/i18n/', '.json');
@@ -41,6 +43,10 @@ export const appConfig: ApplicationConfig = {
           deps: [HttpClient]
         }
       })
-    )
+    ),
+    { provide:BASE_URL1,useValue:environment.baseUrl1 },
+    { provide:BASE_URL2,useValue:environment.baseUrl2 }
+
+
   ]
 };
