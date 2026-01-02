@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 import { changePassword, changePasswordResponse, forgotPassword, forgotPasswordResponse, reset, resetResponse, verifyOtp, verifyOtpResponse } from '../interfaces/password.interface';
 import { EditProfile, EditProfileResponse } from '../interfaces/editProfile.interface';
 import { BASE_URL1 } from '../base/token';
+import { LoggedUserResponse } from '../interfaces/loggedUser.interface';
  
 @Injectable({
   providedIn: 'root'
@@ -50,10 +51,10 @@ export class AuthService implements AuthAPI {
    logout():Observable<string>{
     return this._http.get<string>(this.baseUrl+AuthEndpoints.LOGOUT)
    }
-  loadLoggedUser(): Observable<any> {
+  loadLoggedUser(): Observable<LoggedUserResponse> {
   // this.loadingUser.set(true);
 
-  return this._http.get<any>(
+  return this._http.get<LoggedUserResponse>(
     this.baseUrl+ AuthEndpoints.get_logged_user
   )}
   
