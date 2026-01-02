@@ -1,10 +1,10 @@
 import { Component, inject, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { HealthyService } from '../../core/services/healthy/healthy.service';
-import { TabsComponent } from "../../shared/components/tabs/tabs.component";
+ import { TabsComponent } from "../../shared/components/tabs/tabs.component";
 import { CardsComponent } from "../../shared/components/cards/cards.component";
 import {  IMealItem } from '../../shared/interfaces/healthy/ihealthy.interface';
 import { RouterLink } from "@angular/router";
+import { HealthyService } from './services/healthy/healthy.service';
 @Component({
   selector: 'app-healthy',
   templateUrl: './healthy.component.html',

@@ -4,11 +4,9 @@ import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
 
-import { ClassesService } from '../../core/services/classes/classes.service';
-import { MusclesIdService } from './../../core/services/musclesId/muscles-id.service';
-import { MusclesgroupService } from '../../core/services/musclesggroup/musclesgroup.service';
-import { HealthyService } from '../../core/services/healthy/healthy.service';
-
+ import { MusclesIdService } from '../workouts/services/musclesId/muscles-id.service';
+import { MusclesgroupService } from '../workouts/services/musclesggroup/musclesgroup.service';
+ 
 import { TabsComponent } from '../../shared/components/tabs/tabs.component';
 import { CardsComponent } from '../../shared/components/cards/cards.component';
 import { SliderComponent } from '../../shared/components/slider/slider.component';
@@ -18,6 +16,8 @@ import { DifficultyLevel } from '../../shared/interfaces/levels/ilevels.interfac
 import { Imuscles } from '../../shared/interfaces/muscles/imuscles.interface';
 import { ImusclesId } from '../../shared/interfaces/musclesid/imusclesid.interface';
 import { IMealItem } from '../../shared/interfaces/healthy/ihealthy.interface';
+import { HealthyService } from '../healthy/services/healthy/healthy.service';
+import { ClassesService } from './services/classes/classes.service';
 
 @Component({
   selector: 'app-classes',
