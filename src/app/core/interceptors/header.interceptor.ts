@@ -6,9 +6,9 @@ export const headerInterceptor: HttpInterceptorFn = (req, next) => {
   const platformId = inject(PLATFORM_ID);
 
 
-if (isPlatformBrowser(platformId)) {
+if (isPlatformBrowser(platformId)&& req.url.includes('fitness.elevateegy.com/api/v1')) {
   
-
+ 
   if (localStorage.getItem('token')) {
     
     const modifiedReq = req.clone({

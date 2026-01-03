@@ -36,8 +36,8 @@
       }
     </div>
 
-  
-    <div class="col-span-12 lg:col-span-8" *ngIf="videoUrl">
+  @if (videoUrl) {
+    <div class="col-span-12 lg:col-span-8" >
 
       <iframe
         [src]="videoUrl"
@@ -96,6 +96,7 @@
       </section>
 
     </div>
+  }
   </div>
 </section>
 

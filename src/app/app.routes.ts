@@ -55,6 +55,13 @@ export const routes: Routes = [
       
 
       {
+        path: 'healthy',
+        loadComponent: () =>
+          import('./features/healthy/healthy.component')
+            .then(c => c.HealthyComponent),
+        title: 'Healthy'
+      },
+      {
         path: 'details-meals/:id',
         loadComponent: () =>
           import('./features/meals-details/meals-details.component')

@@ -1,6 +1,6 @@
 import { Component, inject, OnInit, OnDestroy } from '@angular/core';
-import { MusclesgroupService } from '../../core/services/musclesggroup/musclesgroup.service';
-import { MusclesIdService } from '../../core/services/musclesId/muscles-id.service';
+import { MusclesgroupService } from './services/musclesggroup/musclesgroup.service';
+import { MusclesIdService } from './services/musclesId/muscles-id.service';
 import { Imuscles } from '../../shared/interfaces/muscles/imuscles.interface';
 import { ImusclesId } from '../../shared/interfaces/musclesid/imusclesid.interface';
 import { Subscription } from 'rxjs';

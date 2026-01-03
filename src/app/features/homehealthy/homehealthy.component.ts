@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CardsComponent } from "../../shared/components/cards/cards.component";
-import { HealthyService } from '../../core/services/healthy/healthy.service';
-import { Ihealthy } from '../../shared/interfaces/healthy/ihealthy.interface';
+ import { Ihealthy } from '../../shared/interfaces/healthy/ihealthy.interface';
+import { HealthyService } from '../healthy/services/healthy/healthy.service';
 
 @Component({
   selector: 'app-homehealthy',

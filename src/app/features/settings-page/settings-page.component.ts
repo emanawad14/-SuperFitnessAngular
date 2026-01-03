@@ -123,10 +123,7 @@ changeMetricValue(value:EditProfile) {
       error: (error) => {
          this.isloading.set(false)
        this.disabled.set(false)
-      },
-      complete: () => {
-     
-      }
+      } 
     })
 
      
@@ -153,7 +150,7 @@ logout() {
       finalize(() => {
         localStorage.removeItem('user');
         localStorage.removeItem('token');
-        this._router.navigate(['/login']);
+        this._router.navigate(['/home']);
       })
     )
     .subscribe({
