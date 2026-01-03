@@ -4,7 +4,7 @@ import { MainLayoutComponent } from './core/auth/layouts/main-layout/main-layout
 
 export const routes: Routes = [
 
-  /* ================= Main Layout ================= */
+
   {
     path: '',
     component: MainLayoutComponent,
@@ -42,14 +42,17 @@ export const routes: Routes = [
         title: 'Class Details'
       },
 
-      /* ✅ لو لسه محتاجاه */
       {
-        path: 'classId/:id',
+        path: 'healthy',
         loadComponent: () =>
-          import('./features/classes/classes.component')
-            .then(c => c.ClassesComponent),
-        title: 'Class By Id'
+          import('./features/healthy/healthy.component')
+            .then(c => c.HealthyComponent),
+        title: 'healthy'
       },
+
+     
+    
+      
 
       {
         path: 'details-meals/:id',
@@ -59,7 +62,7 @@ export const routes: Routes = [
         title: 'Meal Details'
       },
 
-      /* ✅ Route جاي من main */
+     
       {
         path: 'settings',
         loadComponent: () =>
