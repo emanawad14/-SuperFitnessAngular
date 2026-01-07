@@ -3,7 +3,16 @@
       <div class="card flex justify-center">
         <p class="text-center text-lg">{{title()}}</p>
         @if (type() === "mood") {
-         <p-toggleswitch [(ngModel)]="checked" (ngModelChange)="changeMood($event)" [style]="{'margin-left': '10px'}" />
+         <!-- <p-toggleswitch [(ngModel)]="checked" (ngModelChange)="changeMood($event)" [style]="{'margin-left': '10px'}" /> -->
+          <p-toggleswitch [(ngModel)]="themeVal" (ngModelChange)="toggleTheme()">
+              <ng-template #handle>
+                <i
+                  class="!text-xs pi"
+                  [class.pi-moon]="themeVal == true"
+                  [class.pi-sun]="themeVal == false"
+                ></i>
+              </ng-template>
+          </p-toggleswitch>
         }
       </div>
  </div>

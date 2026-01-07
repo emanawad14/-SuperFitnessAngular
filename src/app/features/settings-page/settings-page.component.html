@@ -94,7 +94,7 @@
      @case ("lang") {
              <div class="card flex justify-center items-center h-20">
 
-                  <p-selectbutton [options]="[{ label: 'عربي', value: 'ar' },{ label: 'ُEnglish', value: 'en' }]" [(ngModel)]="langValue"    (ngModelChange)="changeLanguage($event)" optionLabel="label" optionValue="value" aria-labelledby="basic" />
+                  <p-selectbutton [options]="[{ label: 'عربي', value: 'ar' },{ label: 'ُEnglish', value: 'en' }]" [(ngModel)]="langValue"    (ngModelChange)="changeLanguage()" optionLabel="label" optionValue="value" aria-labelledby="basic" />
 
              </div>
       }

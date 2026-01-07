@@ -24,8 +24,8 @@ export class App  implements OnInit{
     this.flowbiteService.loadFlowbite((flowbite) => {
       initFlowbite();
     });
-    if(this._safeStorage.get('darkMode')==='true') {
-         document.documentElement.classList.add('dark');    
-       }
+    // if(this._safeStorage.get('darkMode')==='true') {
+    //      document.documentElement.classList.add('dark');    
+    //    }
   }
 }
