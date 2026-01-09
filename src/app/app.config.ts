@@ -1,4 +1,4 @@
-import { ApplicationConfig, importProvidersFrom, provideBrowserGlobalErrorListeners, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig, importProvidersFrom, provideAppInitializer, provideBrowserGlobalErrorListeners, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
@@ -15,13 +15,16 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { headerInterceptor } from './core/interceptors/header.interceptor';
 import {  BASE_URL1, BASE_URL2 } from '../../projects/auth/src/base/token';
 import { environment } from '../environments/environment';
+import {appInit} from '../../projects/shared-utils/src/lib/utils/app.utils';
+import {httpLoaderFactory} from '../../projects/shared-utils/src/lib/utils/translateUtils';
 
-export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, '/i18n/', '.json');
-}
+// export function HttpLoaderFactory(http: HttpClient) {
+//   return new TranslateHttpLoader(http, '/i18n/', '.json');
+// }
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideAppInitializer(() => appInit()),
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideHttpClient(withFetch(),withInterceptors([errorInterceptor,loadingInterceptor,headerInterceptor])),
@@ -39,7 +42,7 @@ export const appConfig: ApplicationConfig = {
         defaultLanguage: 'en',
         loader: {
           provide: TranslateLoader,
-          useFactory: HttpLoaderFactory,
+          useFactory:httpLoaderFactory,
           deps: [HttpClient]
         }
       })

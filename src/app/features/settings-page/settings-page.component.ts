@@ -15,7 +15,7 @@ import { ToastService } from '../../../../projects/shared-utils/src/lib/toast.se
 import { Router } from '@angular/router';
 import { EditProfile } from '../../../../projects/auth/src/interfaces/editProfile.interface';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { MytranslateService } from '../../../../projects/shared-utils/src/lib/mytranslate.service';
+import { TranslateManagerService } from '../../../../projects/shared-utils/src/lib/services/translate-manager.service';
 import { TranslatePipe } from '@ngx-translate/core';
 import { SafeStorage } from '../../../../projects/shared-utils/src/lib/safe-storage';
 import { finalize } from 'rxjs';
@@ -33,7 +33,7 @@ export class SettingsPageComponent implements OnInit {
   private readonly _destroyRef=inject(DestroyRef)
   private readonly _router=inject(Router)
   private readonly _toastr=inject(ToastService)
-  private readonly _translate=inject(MytranslateService)
+  private readonly _translate=inject(TranslateManagerService)
   private readonly _safeStorage=inject(SafeStorage)
 
   
@@ -48,7 +48,7 @@ goal: WritableSignal<string > = signal('');
  visible: boolean = false;
   
 langValue = 'en';
-moodValue = 'light';
+// moodValue = 'light';
   changePasswordForm!: FormGroup;
    isloading=signal<boolean>(false)
    disabled=signal<boolean>(false)
@@ -129,18 +129,18 @@ changeMetricValue(value:EditProfile) {
      
 }
 
-changeLanguage(lang:string){
-  this._translate.changeLanguage(lang)
+changeLanguage(){
+  this._translate.toggleLanguage();
 }
-changeMood(mood:string){
-  if(mood==='dark'){
-    document.documentElement.classList.add('dark');
-    localStorage.setItem('darkMode','true')
-  }else if(mood==='light'){
-    document.documentElement.classList.remove('dark');
-    localStorage.setItem('darkMode','false')
-  }
- }
+// changeMood(mood:string){
+//   if(mood==='dark'){
+//     document.documentElement.classList.add('dark');
+//     localStorage.setItem('darkMode','true')
+//   }else if(mood==='light'){
+//     document.documentElement.classList.remove('dark');
+//     localStorage.setItem('darkMode','false')
+//   }
+//  }
 
  
 logout() {
